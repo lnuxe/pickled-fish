@@ -1,40 +1,55 @@
-# pickled-fish · 泡菜鱼
+<div align="center">
 
-macOS **微信本机导出** + **可插拔心理学/情感/关系/社交知识库** + **文件系统 RAG 编排**。
+# 泡菜鱼 · pickled-fish
 
-> **先读 [DISCLAIMER.md](DISCLAIMER.md)。** 非官方 · 仅限本人数据 · 情感建议非专业咨询 · 风险自负。
+**微信本机导出 · 心理/关系知识库 · 文件系统 RAG**
 
-## 架构
+[English](README_EN.md) · [中文](README.md)
 
+<br/>
+
+[![GitHub stars](https://img.shields.io/github/stars/lnuxe/pickled-fish?style=for-the-badge&logo=github&color=e8a838)](https://github.com/lnuxe/pickled-fish/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-2d6a4f?style=for-the-badge)](LICENSE)
+[![Platform](https://img.shields.io/badge/macOS-WeChat%204.x-1d3557?style=for-the-badge)](skills/wechat-mac-export/)
+[![Disclaimer](https://img.shields.io/badge/先读-DISCLAIMER-c1121f?style=for-the-badge)](DISCLAIMER.md)
+
+<br/>
+
+<sub>把聊天变成可检索的证据 · 把证据接到可切换的理论包 · 再决定怎么回——或先不回。</sub>
+
+</div>
+
+---
+
+## 一句话
+
+> 非官方工具：从**你自己的** Mac 微信导出聊天，再用可插拔知识包做分析。  
+> **不是**诊疗，**不是**骚扰助手。使用前请读 [DISCLAIMER](DISCLAIMER.md)。
+
+---
+
+## 它做什么
+
+| | |
+|:--|:--|
+| **导出** | macOS 微信 4.x 本机库 → `chat.txt` |
+| **编排** | `kb-rag` 按问题选 ≤2 个知识包 |
+| **理论** | 依恋 · Gottman · NVC · Sternberg · 沟通谈判… |
+| **实操** | 情圣话术 · 伴侣维护 · 整段聊天管线 |
+| **扩展** | `custom/` + `add-pack.sh` 接你自己的笔记 |
+
+```text
+  WeChat (本地) ──export──► chat.txt
+                               │
+                    ┌──────────┴──────────┐
+                    ▼                     ▼
+              时间线 / 统计           REGISTRY 选包
+                    │                     │
+                    └─────────► 洞察 ◄────┘
+                         packs_used: […]
 ```
-wechat-export → chat.txt → local-chat 统计
-                              ↓
-                         kb-rag 选包
-                              ↓
-        psych-foundations 地图 / 理论包 / 实操包 / custom
-```
 
-| 层 | 路径 |
-|----|------|
-| 总控 | [SKILL.md](SKILL.md) |
-| RAG 编排 | [skills/kb-rag](skills/kb-rag/) |
-| 知识总目录 | [knowledge/REGISTRY.md](knowledge/REGISTRY.md) |
-| 导出 | [skills/wechat-mac-export](skills/wechat-mac-export/) |
-
-## 已整合知识域（摘要）
-
-- **依恋 / ECR-R**：attachment-ecr、dating-master、lovelab、chatrel  
-- **Gottman / 伴侣互动**：lovelab、chatrel、rel-consult  
-- **NVC / 沟通谈判**：nvc、howtotalk（13 框架）  
-- **Sternberg / Knapp / 社交渗透**：chatrel docs  
-- **中文恋爱实操**：qingsheng、partner  
-- **课程地图**：psych-foundations（理论 → pack 路由）  
-
-完整表与可选远端包见 REGISTRY。安装远端：
-
-```bash
-bash scripts/add-pack.sh psych-summaries https://github.com/cognitivetech/Psychology-Summaries
-```
+---
 
 ## 安装
 
@@ -43,6 +58,58 @@ git clone https://github.com/lnuxe/pickled-fish.git ~/.cursor/skills/pickled-fis
 bash ~/.cursor/skills/pickled-fish/scripts/install-skills.sh
 ```
 
-## 许可与致谢
+按需拉远端大库（例：CC0 心理学摘要）：
 
-[LICENSE](LICENSE) · [NOTICE](NOTICE) · [DISCLAIMER](DISCLAIMER.md)
+```bash
+bash ~/.cursor/skills/pickled-fish/scripts/add-pack.sh psych-summaries \
+  https://github.com/cognitivetech/Psychology-Summaries
+```
+
+---
+
+## 知识域速览
+
+| 域 | Pack |
+|:--|:--|
+| 课程地图 | `psych-foundations` |
+| 依恋 / ECR-R | `attachment-ecr` · `dating-master` |
+| 情侣互动 | `lovelab` · `chatrel` · `rel-consult` |
+| 沟通 | `nvc` · `howtotalk` |
+| 中文实操 | `qingsheng` · `partner` |
+
+完整路由 → [`knowledge/REGISTRY.md`](knowledge/REGISTRY.md)
+
+---
+
+## Stars
+
+实时曲线（随仓库 stars 更新）：
+
+[![Star History Chart](https://api.star-history.com/svg?repos=lnuxe/pickled-fish&type=Date&legend=top-left)](https://www.star-history.com/#lnuxe/pickled-fish&Date)
+
+<p align="center">
+  <a href="https://github.com/lnuxe/pickled-fish">
+    <img src="https://img.shields.io/github/stars/lnuxe/pickled-fish?label=Star%20this%20repo&style=social" alt="Star" />
+  </a>
+</p>
+
+---
+
+## 导航
+
+| | |
+|:--|:--|
+| 总控 | [`SKILL.md`](SKILL.md) |
+| RAG | [`skills/kb-rag`](skills/kb-rag/) |
+| 导出 | [`skills/wechat-mac-export`](skills/wechat-mac-export/) |
+| 致谢 | [`NOTICE`](NOTICE) · [`LICENSE`](LICENSE) |
+
+---
+
+<div align="center">
+
+<sub>Built for curious owners of their own data — not for crossing lines.</sub>
+
+**[English →](README_EN.md)**
+
+</div>
