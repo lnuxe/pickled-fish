@@ -1,4 +1,4 @@
-# pickled-fish
+# pickled-fish · 泡菜鱼
 
 macOS **微信本机导出** + **可插拔情感/关系知识库** + **文件系统 RAG 编排**。
 
