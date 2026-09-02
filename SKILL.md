@@ -1,5 +1,5 @@
 ---
-name: mac-wechat-coach
+name: pickled-fish
 description: >-
   macOS WeChat local export plus pluggable relationship knowledge packs and
   filesystem RAG orchestration (qingsheng, dating-master, lovelab, custom KBs).
@@ -7,7 +7,7 @@ description: >-
   or switching coaching frameworks (Gottman, attachment, signaling).
 ---
 
-# mac-wechat-coach · 导出 + 可插拔知识库
+# pickled-fish · 导出 + 可插拔知识库
 
 > [DISCLAIMER.md](DISCLAIMER.md) · 仅限本人数据 · 情感建议非专业咨询 · 禁止骚扰
 

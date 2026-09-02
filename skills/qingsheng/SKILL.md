@@ -6,7 +6,7 @@ description: "情圣 — 中文男性社交与恋爱私教（中文恋爱 AI · 
 <!--
   Vendored from https://github.com/tomwong001/qingsheng-skill (MIT).
   Local addition in this fork/bundle: references/local-chat-pipeline.md
-  Bundle home: https://github.com/lnuxe/mac-wechat-coach
+  Bundle home: https://github.com/lnuxe/pickled-fish
 -->
 
 ## Preamble（每次 skill 加载时自动执行）

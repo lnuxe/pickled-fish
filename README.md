@@ -1,4 +1,4 @@
-# mac-wechat-coach
+# pickled-fish
 
 macOS **微信本机导出** + **可插拔情感/关系知识库** + **文件系统 RAG 编排**。
 
@@ -33,8 +33,8 @@ macOS **微信本机导出** + **可插拔情感/关系知识库** + **文件系
 ## 安装
 
 ```bash
-git clone https://github.com/lnuxe/mac-wechat-coach.git ~/.cursor/skills/mac-wechat-coach
-bash ~/.cursor/skills/mac-wechat-coach/scripts/install-skills.sh
+git clone https://github.com/lnuxe/pickled-fish.git ~/.cursor/skills/pickled-fish
+bash ~/.cursor/skills/pickled-fish/scripts/install-skills.sh
 ```
 
 添加自定义包：

@@ -1,7 +1,7 @@
 ---
 name: kb-rag
 description: >-
-  Customizable filesystem RAG / knowledge-pack orchestration for mac-wechat-coach.
+  Customizable filesystem RAG / knowledge-pack orchestration for pickled-fish.
   Routes questions to qingsheng, dating-master, lovelab, or user packs under
   knowledge/. Use when the user mentions 知识库, RAG, 自定义包, pack, registry,
   切换知识库, or wants non-default coaching frameworks.
@@ -16,7 +16,7 @@ description: >-
 ## 何时启用
 
 - 用户说：知识库 / RAG / 换一套框架 / 用 Gottman / 用信号博弈 / 自定义笔记  
-- 总控 `mac-wechat-coach` 需要选 pack  
+- 总控 `pickled-fish` 需要选 pack  
 - 用户传入 `--pack=qingsheng,dating-master` 这类显式指定  
 
 ## 编排协议（每次）

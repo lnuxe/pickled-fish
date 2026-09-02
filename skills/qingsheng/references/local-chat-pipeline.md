@@ -1,6 +1,6 @@
 # 本地导出聊天记录分析管线（local-chat-pipeline）
 
-本文件为 **mac-wechat-coach 仓库新增**，衔接：
+本文件为 **pickled-fish 仓库新增**，衔接：
 
 - 上游情圣知识库（`../SKILL.md` + 其他 `references/*`）
 - macOS 导出产物 `chat.txt`（见 `../../wechat-mac-export/`）
