@@ -15,7 +15,7 @@
 
 <br/>
 
-<sub>Your chats. Your frameworks. Clear judgment.</sub>
+<sub>Understand the conversation. Then decide what to do.</sub>
 
 </div>
 
