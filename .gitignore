@@ -13,3 +13,6 @@ chat.csv
 .env
 *.pem
 *.key
+~/.qingsheng/
+**/targets/
+*.sqlite

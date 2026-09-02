@@ -1,0 +1,31 @@
+# NOTICE
+
+This repository combines multiple components:
+
+## mac-wechat-coach (export pipeline & orchestration)
+
+Copyright (c) 2026 lnuxe  
+Licensed under the MIT License — see [LICENSE](LICENSE).
+
+Includes original documentation for macOS WeChat local export and the
+`local-chat-pipeline` integration layer.
+
+## qingsheng-skill (relationship coaching knowledge base)
+
+The contents under `skills/qingsheng/` (except files explicitly marked as
+local additions such as `references/local-chat-pipeline.md`) are derived from:
+
+https://github.com/tomwong001/qingsheng-skill
+
+Copyright (c) 2026 tomwong001 and qingsheng-skill contributors  
+Licensed under the MIT License — see [skills/qingsheng/LICENSE](skills/qingsheng/LICENSE).
+
+Upstream project description: Chinese relationship / social coaching skill
+for chat analysis and reply suggestions.
+
+## Third-party tools (not vendored as source here)
+
+- https://github.com/TANGandXUE/wcdb-key-tool  
+- https://github.com/chang-xinhai/WxEcho / `@walkerch/wxecho`  
+
+Users must obtain and comply with those projects’ own licenses and terms.
