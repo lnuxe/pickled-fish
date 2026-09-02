@@ -15,7 +15,7 @@
 
 <br/>
 
-<sub>Understand the conversation. Then decide what to do.</sub>
+<sub>Can you hear it? Understand first. Speak later.</sub>
 
 </div>
 

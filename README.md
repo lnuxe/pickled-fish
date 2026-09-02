@@ -15,7 +15,7 @@
 
 <br/>
 
-<sub>读懂对话，再决定行动</sub>
+<sub>你听得到吗 · 先看懂，再开口</sub>
 
 </div>
 
@@ -83,7 +83,7 @@ bash ~/.cursor/skills/pickled-fish/scripts/add-pack.sh psych-summaries \
 
 ## Stars
 
-实时曲线（随仓库 stars 更新）：
+实时曲线：
 
 [![Star History Chart](https://api.star-history.com/svg?repos=lnuxe/pickled-fish&type=Date&legend=top-left)](https://www.star-history.com/#lnuxe/pickled-fish&Date)
 
