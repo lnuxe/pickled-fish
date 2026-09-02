@@ -1,0 +1,35 @@
+{
+  "name": "明明",
+  "slug": "example_mingming",
+  "profile": {
+    "gender": "男",
+    "age": 29,
+    "occupation": "软件工程师",
+    "zodiac": "摩羯",
+    "mbti": "ISTP",
+    "attachment_style": "回避型",
+    "love_languages": ["服务行动", "精心时刻"],
+    "big_five": {
+      "openness": "中",
+      "conscientiousness": "高",
+      "extraversion": "低",
+      "agreeableness": "中",
+      "neuroticism": "低"
+    },
+    "conflict_style": "逻辑分析型",
+    "decision_style": "分析型",
+    "intimacy_style": "活动 + 服务"
+  },
+  "relationship": {
+    "stage": "深化期",
+    "duration_months": 8,
+    "cohabiting": false,
+    "long_distance": false
+  },
+  "version": "v1",
+  "created_at": "2026-04-05T00:00:00+00:00",
+  "updated_at": "2026-04-05T00:00:00+00:00",
+  "corrections_count": 0,
+  "rqi_score": 6.8,
+  "relationship_stage": "深化期"
+}

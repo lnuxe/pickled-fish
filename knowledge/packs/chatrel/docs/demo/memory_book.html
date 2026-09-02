@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memory Book · Alex × Sam</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+*{box-sizing:border-box}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,Roboto,Arial,sans-serif;
+     margin:0;padding:0;background:#f7f8fa;color:#222;line-height:1.65}
+.wrap{max-width:1280px;margin:0 auto;padding:24px 20px 80px}
+header.top{padding:36px 20px;text-align:center;color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+header.top h1{margin:0;font-size:26px}
+header.top .caption{opacity:.92;margin-top:6px;font-size:14px}
+h2{font-size:22px;border-bottom:2px solid #e3e6eb;padding-bottom:8px;margin-top:36px;color:#2a3042}
+h3{margin-top:22px;font-size:17px;color:#333}
+.muted{color:#8a8f98;font-weight:400;font-size:13px}
+.card{background:#fff;border-radius:10px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.05);margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:900px){.grid2{grid-template-columns:1fr}}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:12px 0 18px}
+.kpi{background:#fff;border-radius:8px;padding:10px 12px;box-shadow:0 1px 2px rgba(0,0,0,.04);text-align:center}
+.kpi .lbl{font-size:11px;color:#8a8f98;text-transform:uppercase;letter-spacing:.5px}
+.kpi .v{font-size:20px;font-weight:700;margin-top:3px}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th,.tbl td{padding:6px 10px;border-bottom:1px solid #eef0f3;text-align:left}
+.tbl th{background:#f3f5f8;color:#555}
+.narrate{background:#fff;padding:16px 20px;border-left:3px solid #7d5fff;border-radius:6px;margin-bottom:16px}
+.narrate ul{margin:0;padding-left:20px}
+.narrate li{margin:6px 0}
+.method{background:#fff8f0;padding:16px;border-left:3px solid #ff9b42;margin-top:22px;border-radius:6px;font-size:13px;color:#555}
+footer{margin-top:50px;padding:16px;text-align:center;color:#888;font-size:12px}
+
+body{background:#faf7f2;line-height:1.85;font-size:16px;
+     font-family:"Source Han Serif","PingFang SC","Noto Serif SC",Georgia,serif}
+.cover{background:linear-gradient(135deg,#f5d0d7 0%,#dbc4f0 50%,#c4d7f0 100%);
+        padding:60px 20px 45px;text-align:center}
+.cover h1{font-size:38px;margin:0 0 18px;font-weight:400;color:#4a3056;letter-spacing:2px}
+.cover .names{font-size:22px;color:#6a4870}
+.cover .dates{font-size:13px;color:#7a5a80;margin-top:16px;font-family:monospace}
+.chapter{margin:50px 0;padding-top:16px;border-top:1px solid #dbc4f0}
+.chapter-num{font-size:12px;color:#8a6a80;letter-spacing:3px;font-weight:500;margin-bottom:6px}
+.chapter-title{font-size:26px;margin:0 0 12px;color:#4a3056;font-weight:500}
+.chapter-intro{font-size:13px;color:#7a5a80;margin-bottom:24px;font-style:italic}
+.msg{background:#fff;border-radius:10px;padding:12px 16px;margin:8px 0;
+      box-shadow:0 1px 3px rgba(106,72,112,.06)}
+.msg-meta{font-size:11px;color:#9a8a9a;margin-bottom:5px;font-family:monospace}
+.role-me{color:#4f8cff;font-weight:700;margin-right:8px}
+.role-ta{color:#ff5a7e;font-weight:700;margin-right:8px}
+.first-card{background:#fff;border-radius:8px;padding:14px 18px;margin:10px 0;
+              border-left:3px solid #dbc4f0}
+.first-label{color:#6a4870;font-weight:600;font-size:13px}
+.first-day{color:#9a8a9a;font-family:monospace;font-size:11px;margin:3px 0}
+.cloud{padding:22px 12px;text-align:center;line-height:2.6;background:#fff;border-radius:10px}
+.chip{display:inline-block;margin:3px 8px;color:#6a4870;font-weight:500}
+.search-box{padding:10px 0 18px;background:#faf7f2;border-bottom:1px dashed #dcc8d2;
+             position:sticky;top:0;z-index:10}
+.search-input{width:100%;padding:11px 15px;border:1.5px solid #dbc4f0;border-radius:8px;
+               font-size:15px;background:#fff}
+.search-input:focus{outline:none;border-color:#6a4870}
+.search-result{max-height:380px;overflow-y:auto;margin-top:10px;background:#fff;
+                 border-radius:8px;padding:6px;display:none}
+.search-result.visible{display:block}
+.search-hit{padding:6px 10px;border-bottom:1px solid #f0e5dc;font-size:13px}
+mark{background:#fff4a3;padding:0 2px}
+
+header.top{background:linear-gradient(135deg,#f5d0d7,#dbc4f0,#c4d7f0)}
+</style></head><body>
+<header class="top">
+  <h1>Memory Book · Alex × Sam</h1>
+  <div class="caption">89 days · 2,914 messages</div>
+</header>
+<div class="wrap">
+
+    <div class="cover">
+      <h1>Memory Book</h1>
+      <div class="names">Alex × Sam</div>
+      <div class="dates">2025-01-01 → 2025-03-31 · 89 days</div>
+    </div>
+
+    <div class="search-box">
+      <input type="text" class="search-input" id="q" placeholder="🔎 Search any keyword..." oninput="doSearch()">
+      <div class="search-result" id="sr"></div>
+    </div>
+
+    <section class="chapter">
+      <div class="chapter-num">CHAPTER ONE</div>
+      <h2 class="chapter-title">Meeting</h2>
+      <div class="chapter-intro">Early-phase sampling from the first 300 messages.</div>
+      <div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-01 22:02</div><div>刚看完一部电影</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-01 22:13</div><div>刚看完一部电影</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-04 22:04</div><div>我已经到宿舍了</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-04 22:09</div><div>今天老师讲了好多东西</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-07 13:15</div><div>今天天气不错</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-08 12:34</div><div>今天天气不错哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-09 19:03</div><div>我在食堂~</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-10 20:06</div><div>今天老师讲了好多东西</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-15 15:06</div><div>感觉今天好累啊</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-16 13:06</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-16 13:48</div><div>感觉今天好累</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-17 13:28</div><div>哈哈哈哈嘻嘻</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-17 13:34</div><div>我在写作业</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-17 13:45</div><div>我已经到宿舍了</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-17 13:55</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-18 12:31</div><div>今天老师讲了好多东西</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-18 13:33</div><div>感觉今天好累</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-18 13:37</div><div>你好有趣呀</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-18 13:42</div><div>刚才好好笑</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-19 22:13</div><div>刚才好好笑</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-19 23:13</div><div>刚看完一部电影</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-19 23:53</div><div>今天老师讲了好多东西</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-20 16:01</div><div>今天超开心</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-20 17:32</div><div>刚才好好笑啊</div></div>
+    </section>
+
+    <section class="chapter">
+      <div class="chapter-num">CHAPTER TWO</div>
+      <h2 class="chapter-title">Every first time</h2>
+      <div class="first-card"><div class="first-label">first_baby</div><div class="first-day">Day 23 · 2025-01-24 14:55</div><div>Me: 宝宝晚安</div></div><div class="first-card"><div class="first-label">first_night</div><div class="first-day">Day 23 · 2025-01-24 14:55</div><div>Me: 宝宝晚安</div></div><div class="first-card"><div class="first-label">first_kiss_hug</div><div class="first-day">Day 30 · 2025-01-31 11:31</div><div>Me: 亲亲</div></div><div class="first-card"><div class="first-label">first_miss_you</div><div class="first-day">Day 31 · 2025-02-01 21:39</div><div>Me: 好想你</div></div><div class="first-card"><div class="first-label">first_morning</div><div class="first-day">Day 33 · 2025-02-03 16:28</div><div>Me: 早上好</div></div><div class="first-card"><div class="first-label">first_love_you</div><div class="first-day">Day 36 · 2025-02-06 01:30</div><div>Partner: 爱你</div></div><div class="first-card"><div class="first-label">first_we_future</div><div class="first-day">Day 51 · 2025-02-21 00:00</div><div>Partner: 等我们毕业</div></div><div class="first-card"><div class="first-label">first_forever</div><div class="first-day">Day 51 · 2025-02-21 00:02</div><div>Me: 一辈子</div></div><div class="first-card"><div class="first-label">first_apology</div><div class="first-day">Day 55 · 2025-02-25 22:03</div><div>Me: 对不起</div></div><div class="first-card"><div class="first-label">first_fight</div><div class="first-day">Day 55 · 2025-02-25 21:18</div><div>Me: 我生气了</div></div><div class="first-card"><div class="first-label">first_only_you</div><div class="first-day">Day 55 · 2025-02-25 21:08</div><div>Partner: 我又不是只有你这一件事</div></div><div class="first-card"><div class="first-label">first_dream_of_you</div><div class="first-day">Day 60 · 2025-03-02 02:47</div><div>Me: 刚才又梦到你</div></div><div class="first-card"><div class="first-label">first_together</div><div class="first-day">Day 68 · 2025-03-10 01:45</div><div>Me: 我们以后要一直在一起</div></div><div class="first-card"><div class="first-label">first_bf_gf</div><div class="first-day">Day 68 · 2025-03-10 20:10</div><div>Me: 我说我有男朋友了</div></div>
+    </section>
+
+    <section class="chapter">
+      <div class="chapter-num">CHAPTER THREE</div>
+      <h2 class="chapter-title">Sweetest moments</h2>
+      <div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-02-27 17:00</div><div>想你了呀</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-03-27 02:19</div><div>我爱你呗</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-24 14:55</div><div>宝宝晚安</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-02-01 00:00</div><div>我好像是真的喜欢你</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-02-01 00:04</div><div>好喜欢你</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-02-03 16:55</div><div>你今天好好看</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-02-06 01:19</div><div>心跳加速</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-02-06 01:31</div><div>我也爱你</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-02-06 21:54</div><div>在干嘛呀宝宝</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-02-07 23:41</div><div>宝宝晚安啊</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-02-12 20:44</div><div>在干嘛呀宝宝</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-02-13 16:16</div><div>在干嘛呀宝宝</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-02-18 12:08</div><div>心跳加速</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-02-20 15:37</div><div>宝宝嘻嘻</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-02-21 17:53</div><div>你今天好好看</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-02-24 16:30</div><div>心跳加速</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-02-25 22:07</div><div>别生气了宝宝</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-03-02 00:33</div><div>好喜欢你啊</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-03-02 00:59</div><div>你今天好好看</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-03-03 01:11</div><div>我好像是真的喜欢你哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-03-04 19:40</div><div>好喜欢你嘻嘻</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-03-04 20:37</div><div>爱你哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-03-06 15:13</div><div>mua~</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-03-09 17:24</div><div>你今天好好看</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-03-14 12:29</div><div>mua哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-03-15 22:02</div><div>心跳加速</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-03-15 23:20</div><div>好喜欢你~</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-03-20 23:53</div><div>在干嘛呀宝宝</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-03-21 15:55</div><div>心跳加速</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-03-23 15:57</div><div>心跳加速</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-03-24 01:30</div><div>想你的时候世界都变温柔了哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-03-24 15:12</div><div>在干嘛呀宝宝呀</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-03-27 04:30</div><div>想你的时候世界都变温柔了</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-03-27 19:36</div><div>心跳加速</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-03-28 16:25</div><div>心跳加速</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-03-29 16:07</div><div>宝贝嘻嘻</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-03-30 12:16</div><div>心跳加速</div></div>
+    </section>
+
+    <section class="chapter">
+      <div class="chapter-num">CHAPTER FOUR</div>
+      <h2 class="chapter-title">Most striking declarations</h2>
+      
+    </section>
+
+    <section class="chapter">
+      <div class="chapter-num">CHAPTER FIVE</div>
+      <h2 class="chapter-title">Deepest disclosures</h2>
+      <div class="chapter-intro">Altman-Taylor core layer: vulnerable self-disclosure.</div>
+      <div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-03-23 01:00</div><div>其实我小时候爸妈关系不太好</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-02-25 21:08</div><div>我又不是只有你这一件事</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-03-21 16:00</div><div>我以前从来没跟别人说过</div></div>
+    </section>
+
+    <section class="chapter">
+      <div class="chapter-num">CHAPTER SIX</div>
+      <h2 class="chapter-title">Laughter</h2>
+      <div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-22 19:30</div><div>哈哈哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-02-03 16:19</div><div>哈哈哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-02-19 23:24</div><div>哈哈哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-16 14:06</div><div>哈哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-18 12:32</div><div>哈哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-02-24 02:24</div><div>哈哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-16 13:06</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-17 13:24</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-17 13:55</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-19 22:27</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-20 16:00</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-20 16:24</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-20 17:12</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-21 17:56</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-23 16:36</div><div>哈哈哈哈哈呀</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-24 15:37</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-25 10:36</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-28 00:21</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-28 23:35</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-01-29 20:00</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-01-29 20:52</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-02-03 01:28</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-02-03 17:14</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-02-04 14:32</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-02-04 14:44</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-02-06 20:10</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-02-06 22:02</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-ta">Partner</span>2025-02-06 22:09</div><div>哈哈哈哈哈</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-02-07 22:18</div><div>哈哈哈哈哈呗</div></div>
+<div class="msg"><div class="msg-meta"><span class="role-me">Me</span>2025-02-08 00:15</div><div>哈哈哈哈哈</div></div>
+    </section>
+
+    <section class="chapter">
+      <div class="chapter-num">CHAPTER SEVEN</div>
+      <h2 class="chapter-title">Private lexicon</h2>
+      <div class="chapter-intro">Words frequent here, rare in your baseline chats (couple idiosyncratic code).</div>
+      <div class="cloud"><span class="chip" style="font-size:34.0px" title="180 times · ratio 360.0×">哈哈哈哈</span><span class="chip" style="font-size:30.5px" title="150 times · ratio 300.0×">嘻嘻</span><span class="chip" style="font-size:24.8px" title="102 times · ratio 204.0×">今天老师</span><span class="chip" style="font-size:24.8px" title="102 times · ratio 204.0×">讲了好多</span><span class="chip" style="font-size:24.4px" title="98 times · ratio 196.0×">然后呢</span><span class="chip" style="font-size:24.2px" title="97 times · ratio 194.0×">我在食堂</span><span class="chip" style="font-size:23.9px" title="94 times · ratio 188.0×">刚看完一</span><span class="chip" style="font-size:23.4px" title="90 times · ratio 180.0×">我在写作</span><span class="chip" style="font-size:23.3px" title="89 times · ratio 178.0×">很开心认</span><span class="chip" style="font-size:23.1px" title="87 times · ratio 174.0×">感觉今天</span><span class="chip" style="font-size:22.9px" title="86 times · ratio 172.0×">我已经到</span><span class="chip" style="font-size:22.9px" title="86 times · ratio 172.0×">东西</span><span class="chip" style="font-size:22.9px" title="86 times · ratio 172.0×">你好有趣</span><span class="chip" style="font-size:22.8px" title="85 times · ratio 170.0×">我笑死了</span><span class="chip" style="font-size:22.7px" title="84 times · ratio 168.0×">部电影</span><span class="chip" style="font-size:22.7px" title="84 times · ratio 168.0×">今天天气</span><span class="chip" style="font-size:22.7px" title="84 times · ratio 168.0×">刚出门</span><span class="chip" style="font-size:22.6px" title="83 times · ratio 166.0×">在干嘛</span><span class="chip" style="font-size:22.6px" title="83 times · ratio 166.0×">真的吗</span><span class="chip" style="font-size:22.6px" title="83 times · ratio 166.0×">今天超开</span><span class="chip" style="font-size:22.2px" title="80 times · ratio 160.0×">识你</span><span class="chip" style="font-size:22.1px" title="79 times · ratio 158.0×">刚才好好</span><span class="chip" style="font-size:22.0px" title="78 times · ratio 156.0×">我懂你</span><span class="chip" style="font-size:22.0px" title="78 times · ratio 156.0×">原来如此</span><span class="chip" style="font-size:21.8px" title="76 times · ratio 152.0×">好累</span><span class="chip" style="font-size:21.8px" title="76 times · ratio 152.0×">就是这样</span><span class="chip" style="font-size:21.6px" title="75 times · ratio 150.0×">对对对</span><span class="chip" style="font-size:21.4px" title="73 times · ratio 146.0×">不错</span><span class="chip" style="font-size:21.2px" title="71 times · ratio 142.0×">嘿嘿</span><span class="chip" style="font-size:21.2px" title="71 times · ratio 142.0×">宿舍了</span><span class="chip" style="font-size:21.2px" title="71 times · ratio 142.0×">哈哈哈</span><span class="chip" style="font-size:20.9px" title="69 times · ratio 138.0×">忙不忙</span><span class="chip" style="font-size:20.7px" title="67 times · ratio 134.0×">吃了吗</span><span class="chip" style="font-size:20.2px" title="63 times · ratio 126.0×">好的</span><span class="chip" style="font-size:20.2px" title="63 times · ratio 126.0×">很棒</span><span class="chip" style="font-size:19.1px" title="53 times · ratio 106.0×">刚下课</span><span class="chip" style="font-size:14.0px" title="10 times · ratio 20.0×">哈哈</span><span class="chip" style="font-size:14.0px" title="10 times · ratio 20.0×">宝宝</span><span class="chip" style="font-size:14.0px" title="10 times · ratio 20.0×">你是世界</span><span class="chip" style="font-size:14.0px" title="10 times · ratio 20.0×">上最可爱</span></div>
+    </section>
+
+    <script>
+    const SEARCH_DATA = [{"t":"2025-01-04 22:16","r":"me","x":"哈哈哈"},{"t":"2025-01-06 15:03","r":"me","x":"哈哈哈"},{"t":"2025-01-07 13:02","r":"ta","x":"哈哈哈哈"},{"t":"2025-01-10 20:10","r":"me","x":"哈哈哈哈"},{"t":"2025-01-11 12:22","r":"ta","x":"哈哈哈哈"},{"t":"2025-01-14 18:00","r":"ta","x":"哈哈哈"},{"t":"2025-01-14 18:09","r":"ta","x":"哈哈哈"},{"t":"2025-01-15 14:19","r":"ta","x":"哈哈哈哈"},{"t":"2025-01-15 14:26","r":"me","x":"哈哈哈呗"},{"t":"2025-01-15 14:44","r":"me","x":"哈哈哈哈"},{"t":"2025-01-16 13:06","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-01-16 13:50","r":"me","x":"哈哈哈哈呗"},{"t":"2025-01-16 14:06","r":"ta","x":"哈哈哈哈哈哈"},{"t":"2025-01-17 13:06","r":"ta","x":"哈哈哈"},{"t":"2025-01-17 13:24","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-01-17 13:28","r":"ta","x":"哈哈哈哈嘻嘻"},{"t":"2025-01-17 13:49","r":"ta","x":"哈哈哈"},{"t":"2025-01-17 13:55","r":"me","x":"哈哈哈哈哈"},{"t":"2025-01-17 14:41","r":"ta","x":"哈哈哈哈嘻嘻"},{"t":"2025-01-18 12:11","r":"me","x":"哈哈哈哈"},{"t":"2025-01-18 12:12","r":"ta","x":"哈哈哈"},{"t":"2025-01-18 12:24","r":"ta","x":"哈哈哈哈"},{"t":"2025-01-18 12:29","r":"me","x":"哈哈哈哈"},{"t":"2025-01-18 12:32","r":"ta","x":"哈哈哈哈哈哈"},{"t":"2025-01-18 13:36","r":"me","x":"哈哈哈"},{"t":"2025-01-19 22:27","r":"me","x":"哈哈哈哈哈"},{"t":"2025-01-19 23:21","r":"me","x":"哈哈哈"},{"t":"2025-01-20 16:00","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-01-20 16:14","r":"me","x":"哈哈哈哈"},{"t":"2025-01-20 16:17","r":"ta","x":"哈哈哈"},{"t":"2025-01-20 16:24","r":"me","x":"哈哈哈哈哈"},{"t":"2025-01-20 17:12","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-01-21 17:42","r":"me","x":"哈哈哈哈"},{"t":"2025-01-21 17:56","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-01-21 18:15","r":"ta","x":"嘻嘻嘻嘻"},{"t":"2025-01-21 18:35","r":"me","x":"哈哈哈哈"},{"t":"2025-01-22 19:04","r":"ta","x":"哈哈哈哈"},{"t":"2025-01-22 19:30","r":"ta","x":"哈哈哈哈哈哈哈"},{"t":"2025-01-23 15:13","r":"ta","x":"哈哈哈"},{"t":"2025-01-23 15:34","r":"ta","x":"哈哈哈"},{"t":"2025-01-23 16:20","r":"ta","x":"哈哈哈哈"},{"t":"2025-01-23 16:36","r":"ta","x":"哈哈哈哈哈呀"},{"t":"2025-01-24 14:55","r":"me","x":"宝宝晚安"},{"t":"2025-01-24 15:30","r":"me","x":"哈哈哈"},{"t":"2025-01-24 15:37","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-01-24 15:39","r":"me","x":"哈哈哈哈"},{"t":"2025-01-25 10:36","r":"me","x":"哈哈哈哈哈"},{"t":"2025-01-25 11:37","r":"ta","x":"哈哈哈"},{"t":"2025-01-28 00:02","r":"me","x":"哈哈哈"},{"t":"2025-01-28 00:21","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-01-28 00:48","r":"me","x":"哈哈哈"},{"t":"2025-01-28 23:12","r":"me","x":"哈哈哈哈"},{"t":"2025-01-28 23:29","r":"me","x":"哈哈哈哈"},{"t":"2025-01-28 23:35","r":"me","x":"哈哈哈哈哈"},{"t":"2025-01-29 20:00","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-01-29 20:25","r":"me","x":"哈哈哈"},{"t":"2025-01-29 20:52","r":"me","x":"哈哈哈哈哈"},{"t":"2025-01-30 14:52","r":"ta","x":"哈哈哈哈~"},{"t":"2025-01-31 11:31","r":"me","x":"亲亲"},{"t":"2025-01-31 11:52","r":"ta","x":"哈哈哈哈"},{"t":"2025-01-31 12:19","r":"ta","x":"么么"},{"t":"2025-01-31 12:27","r":"me","x":"哈哈哈哈"},{"t":"2025-01-31 12:54","r":"ta","x":"么么呀"},{"t":"2025-02-01 00:00","r":"me","x":"我好像是真的喜欢你"},{"t":"2025-02-01 00:04","r":"ta","x":"好喜欢你"},{"t":"2025-02-01 21:37","r":"ta","x":"宝宝"},{"t":"2025-02-01 21:39","r":"me","x":"好想你"},{"t":"2025-02-01 22:12","r":"me","x":"哈哈哈哈"},{"t":"2025-02-03 00:24","r":"me","x":"哈哈哈哈"},{"t":"2025-02-03 00:44","r":"ta","x":"哈哈哈"},{"t":"2025-02-03 00:50","r":"ta","x":"哈哈哈"},{"t":"2025-02-03 01:15","r":"ta","x":"亲亲"},{"t":"2025-02-03 01:28","r":"me","x":"哈哈哈哈哈"},{"t":"2025-02-03 02:02","r":"me","x":"哈哈哈哈"},{"t":"2025-02-03 15:22","r":"me","x":"亲亲"},{"t":"2025-02-03 15:25","r":"ta","x":"哈哈哈哈"},{"t":"2025-02-03 15:41","r":"me","x":"抱抱"},{"t":"2025-02-03 16:19","r":"me","x":"哈哈哈哈哈哈哈"},{"t":"2025-02-03 16:55","r":"me","x":"你今天好好看"},{"t":"2025-02-03 17:14","r":"me","x":"哈哈哈哈哈"},{"t":"2025-02-03 17:40","r":"ta","x":"哈哈哈哈"},{"t":"2025-02-03 17:54","r":"me","x":"哈哈哈"},{"t":"2025-02-04 13:40","r":"ta","x":"哈哈哈"},{"t":"2025-02-04 13:46","r":"ta","x":"哈哈哈哈"},{"t":"2025-02-04 14:05","r":"ta","x":"宝贝"},{"t":"2025-02-04 14:32","r":"me","x":"哈哈哈哈哈"},{"t":"2025-02-04 14:44","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-02-06 01:19","r":"me","x":"心跳加速"},{"t":"2025-02-06 01:30","r":"ta","x":"宝宝"},{"t":"2025-02-06 01:30","r":"ta","x":"爱你"},{"t":"2025-02-06 01:31","r":"me","x":"我也爱你"},{"t":"2025-02-06 01:33","r":"ta","x":"哈哈哈哈啊"},{"t":"2025-02-06 20:10","r":"me","x":"哈哈哈哈哈"},{"t":"2025-02-06 21:54","r":"ta","x":"在干嘛呀宝宝"},{"t":"2025-02-06 22:02","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-02-06 22:09","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-02-06 22:10","r":"me","x":"哈哈哈哈"},{"t":"2025-02-06 22:25","r":"me","x":"想你了"},{"t":"2025-02-07 22:18","r":"me","x":"哈哈哈哈哈呗"},{"t":"2025-02-07 22:47","r":"ta","x":"哈哈哈~"},{"t":"2025-02-07 23:02","r":"ta","x":"哈哈哈哈"},{"t":"2025-02-07 23:14","r":"me","x":"哈哈哈哈"},{"t":"2025-02-07 23:32","r":"me","x":"哈哈哈"},{"t":"2025-02-07 23:41","r":"me","x":"宝宝晚安啊"},{"t":"2025-02-08 00:15","r":"me","x":"哈哈哈哈哈"},{"t":"2025-02-08 00:45","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-02-08 00:47","r":"ta","x":"哈哈哈"},{"t":"2025-02-09 00:04","r":"ta","x":"哈哈哈"},{"t":"2025-02-09 00:19","r":"ta","x":"么么"},{"t":"2025-02-09 00:30","r":"me","x":"哈哈哈哈"},{"t":"2025-02-09 00:35","r":"me","x":"想你了"},{"t":"2025-02-09 00:46","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-02-09 00:51","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-02-09 01:01","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-02-09 21:10","r":"me","x":"哈哈哈哈哈"},{"t":"2025-02-10 16:03","r":"ta","x":"宝贝"},{"t":"2025-02-10 16:48","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-02-10 16:50","r":"me","x":"哈哈哈哈"},{"t":"2025-02-11 18:19","r":"ta","x":"哈哈哈哈"},{"t":"2025-02-11 18:21","r":"me","x":"哈哈哈哈哈"},{"t":"2025-02-11 18:27","r":"ta","x":"哈哈哈呀"},{"t":"2025-02-11 18:33","r":"me","x":"爱你"},{"t":"2025-02-11 19:12","r":"me","x":"抱抱哈"},{"t":"2025-02-11 19:22","r":"me","x":"哈哈哈"},{"t":"2025-02-11 19:22","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-02-11 19:30","r":"ta","x":"哈哈哈哈"},{"t":"2025-02-11 19:33","r":"ta","x":"哈哈哈哈"},{"t":"2025-02-11 19:51","r":"me","x":"哈哈哈"},{"t":"2025-02-11 20:01","r":"me","x":"哈哈哈哈哈"},{"t":"2025-02-11 20:42","r":"me","x":"哈哈哈"},{"t":"2025-02-12 20:30","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-02-12 20:44","r":"me","x":"在干嘛呀宝宝"},{"t":"2025-02-12 21:24","r":"ta","x":"好想你"},{"t":"2025-02-13 14:01","r":"me","x":"亲亲~"},{"t":"2025-02-13 14:06","r":"me","x":"宝宝"},{"t":"2025-02-13 14:11","r":"me","x":"哈哈哈哈哈~"},{"t":"2025-02-13 14:16","r":"me","x":"爱你"},{"t":"2025-02-13 14:21","r":"ta","x":"爱你"},{"t":"2025-02-13 14:34","r":"me","x":"哈哈哈哈"},{"t":"2025-02-13 14:50","r":"ta","x":"哈哈哈哈"},{"t":"2025-02-13 15:04","r":"me","x":"哈哈哈哈"},{"t":"2025-02-13 15:54","r":"me","x":"哈哈哈哈"},{"t":"2025-02-13 16:06","r":"ta","x":"哈哈哈"},{"t":"2025-02-13 16:16","r":"ta","x":"在干嘛呀宝宝"},{"t":"2025-02-14 19:25","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-02-14 19:51","r":"me","x":"哈哈哈~"},{"t":"2025-02-14 20:32","r":"ta","x":"哈哈哈哈啊"},{"t":"2025-02-16 19:26","r":"me","x":"哈哈哈哈啊"},{"t":"2025-02-16 20:11","r":"me","x":"哈哈哈哈"},{"t":"2025-02-16 20:14","r":"me","x":"哈哈哈哈哈"},{"t":"2025-02-17 11:41","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-02-17 12:20","r":"ta","x":"哈哈哈"},{"t":"2025-02-17 13:15","r":"ta","x":"想你了"},{"t":"2025-02-18 11:00","r":"me","x":"哈哈哈哈哈"},{"t":"2025-02-18 11:08","r":"me","x":"哈哈哈哈"},{"t":"2025-02-18 11:20","r":"me","x":"哈哈哈哈啊"},{"t":"2025-02-18 11:43","r":"me","x":"哈哈哈"},{"t":"2025-02-18 12:08","r":"me","x":"心跳加速"},{"t":"2025-02-18 12:13","r":"me","x":"哈哈哈哈"},{"t":"2025-02-18 12:25","r":"me","x":"哈哈哈哈哈~"},{"t":"2025-02-18 12:25","r":"ta","x":"哈哈哈哈"},{"t":"2025-02-19 20:25","r":"ta","x":"哈哈哈啊"},{"t":"2025-02-19 20:30","r":"me","x":"哈哈哈哈"},{"t":"2025-02-19 21:48","r":"me","x":"哈哈哈哈哈"},{"t":"2025-02-19 21:50","r":"ta","x":"哈哈哈"},{"t":"2025-02-19 22:12","r":"ta","x":"哈哈哈哈"},{"t":"2025-02-19 22:55","r":"me","x":"么么哈"},{"t":"2025-02-19 23:15","r":"me","x":"哈哈哈"},{"t":"2025-02-19 23:24","r":"ta","x":"哈哈哈哈哈哈哈"},{"t":"2025-02-20 14:11","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-02-20 15:37","r":"ta","x":"宝宝嘻嘻"},{"t":"2025-02-20 15:49","r":"ta","x":"好想你"},{"t":"2025-02-20 16:10","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-02-20 16:31","r":"me","x":"mua"},{"t":"2025-02-20 16:47","r":"ta","x":"哈哈哈哈"},{"t":"2025-02-20 17:04","r":"me","x":"mua"},{"t":"2025-02-21 17:53","r":"ta","x":"你今天好好看"},{"t":"2025-02-21 18:51","r":"ta","x":"哈哈哈呗"},{"t":"2025-02-22 13:02","r":"ta","x":"嘻嘻嘻嘻"},{"t":"2025-02-22 13:14","r":"me","x":"哈哈哈哈哈"},{"t":"2025-02-22 13:23","r":"me","x":"哈哈哈"},{"t":"2025-02-22 13:28","r":"ta","x":"哈哈哈呗"},{"t":"2025-02-22 13:37","r":"ta","x":"嘻嘻嘻嘻"},{"t":"2025-02-24 01:57","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-02-24 02:24","r":"me","x":"哈哈哈哈哈哈"},{"t":"2025-02-24 16:14","r":"me","x":"哈哈哈哈哈"},{"t":"2025-02-24 16:30","r":"ta","x":"心跳加速"},{"t":"2025-02-25 21:08","r":"ta","x":"我又不是只有你这一件事"},{"t":"2025-02-25 22:07","r":"me","x":"别生气了宝宝"},{"t":"2025-02-25 22:28","r":"ta","x":"爱你"},{"t":"2025-02-26 21:12","r":"me","x":"哈哈哈哈"},{"t":"2025-02-26 23:07","r":"me","x":"哈哈哈哈"},{"t":"2025-02-26 23:33","r":"ta","x":"哈哈哈哈哈~"},{"t":"2025-02-27 15:22","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-02-27 15:24","r":"me","x":"想你了"},{"t":"2025-02-27 15:52","r":"me","x":"哈哈哈哈哈"},{"t":"2025-02-27 15:53","r":"ta","x":"亲亲"},{"t":"2025-02-27 17:00","r":"ta","x":"想你了呀"},{"t":"2025-02-27 18:04","r":"me","x":"哈哈哈啊"},{"t":"2025-02-27 18:26","r":"ta","x":"哈哈哈哈"},{"t":"2025-02-28 12:31","r":"ta","x":"宝宝早"},{"t":"2025-02-28 12:38","r":"ta","x":"哈哈哈哈"},{"t":"2025-02-28 13:06","r":"me","x":"哈哈哈"},{"t":"2025-02-28 13:40","r":"me","x":"哈哈哈哈哈"},{"t":"2025-02-28 13:58","r":"me","x":"哈哈哈"},{"t":"2025-03-02 00:33","r":"ta","x":"好喜欢你啊"},{"t":"2025-03-02 00:59","r":"me","x":"你今天好好看"},{"t":"2025-03-02 01:06","r":"me","x":"哈哈哈哈哈嘻嘻"},{"t":"2025-03-02 01:20","r":"ta","x":"哈哈哈"},{"t":"2025-03-02 22:05","r":"ta","x":"只有你"},{"t":"2025-03-03 01:11","r":"me","x":"我好像是真的喜欢你哈"},{"t":"2025-03-03 22:22","r":"ta","x":"哈哈哈呗"},{"t":"2025-03-03 23:20","r":"me","x":"哈哈哈哈呀"},{"t":"2025-03-03 23:30","r":"me","x":"宝宝"},{"t":"2025-03-04 18:32","r":"me","x":"抱抱"},{"t":"2025-03-04 18:46","r":"me","x":"哈哈哈哈"},{"t":"2025-03-04 19:40","r":"ta","x":"好喜欢你嘻嘻"},{"t":"2025-03-04 19:48","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-04 20:36","r":"me","x":"哈哈哈哈哈"},{"t":"2025-03-04 20:37","r":"ta","x":"爱你哈哈"},{"t":"2025-03-04 21:16","r":"ta","x":"哈哈哈"},{"t":"2025-03-04 21:34","r":"ta","x":"mua"},{"t":"2025-03-04 21:46","r":"ta","x":"哈哈哈"},{"t":"2025-03-05 19:13","r":"ta","x":"哈哈哈哈哈呗"},{"t":"2025-03-05 19:56","r":"me","x":"哈哈哈"},{"t":"2025-03-05 19:56","r":"ta","x":"哈哈哈"},{"t":"2025-03-05 21:07","r":"ta","x":"哈哈哈"},{"t":"2025-03-06 14:07","r":"me","x":"亲亲"},{"t":"2025-03-06 14:21","r":"me","x":"哈哈哈"},{"t":"2025-03-06 15:13","r":"me","x":"mua~"},{"t":"2025-03-06 15:33","r":"me","x":"好想你"},{"t":"2025-03-06 15:58","r":"me","x":"哈哈哈哈"},{"t":"2025-03-06 16:02","r":"ta","x":"哈哈哈哈"},{"t":"2025-03-06 16:11","r":"me","x":"我爱你"},{"t":"2025-03-06 16:30","r":"me","x":"哈哈哈"},{"t":"2025-03-06 17:39","r":"ta","x":"哈哈哈"},{"t":"2025-03-07 22:00","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-07 22:23","r":"me","x":"哈哈哈"},{"t":"2025-03-07 23:05","r":"me","x":"哈哈哈"},{"t":"2025-03-08 00:23","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-09 01:12","r":"me","x":"哈哈哈哈"},{"t":"2025-03-09 02:15","r":"ta","x":"哈哈哈哈哈~"},{"t":"2025-03-09 03:14","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-09 03:30","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-09 03:57","r":"me","x":"哈哈哈哈"},{"t":"2025-03-09 15:00","r":"ta","x":"mua"},{"t":"2025-03-09 16:22","r":"ta","x":"哈哈哈"},{"t":"2025-03-09 17:09","r":"ta","x":"哈哈哈哈"},{"t":"2025-03-09 17:24","r":"ta","x":"你今天好好看"},{"t":"2025-03-09 18:04","r":"ta","x":"抱抱呗"},{"t":"2025-03-09 18:17","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-10 20:15","r":"ta","x":"爱你"},{"t":"2025-03-11 12:43","r":"ta","x":"哈哈哈哈"},{"t":"2025-03-11 12:49","r":"ta","x":"哈哈哈"},{"t":"2025-03-11 12:54","r":"me","x":"哈哈哈哈哈"},{"t":"2025-03-11 14:32","r":"me","x":"哈哈哈哈"},{"t":"2025-03-12 23:14","r":"me","x":"哈哈哈哈"},{"t":"2025-03-12 23:53","r":"me","x":"哈哈哈"},{"t":"2025-03-13 00:48","r":"me","x":"哈哈哈哈"},{"t":"2025-03-14 10:00","r":"me","x":"我害怕有一天你会"},{"t":"2025-03-14 10:13","r":"me","x":"哈哈哈哈"},{"t":"2025-03-14 11:47","r":"me","x":"哈哈哈哈哈"},{"t":"2025-03-14 12:17","r":"ta","x":"哈哈哈哈嘻嘻"},{"t":"2025-03-14 12:29","r":"ta","x":"mua哈"},{"t":"2025-03-15 22:02","r":"me","x":"心跳加速"},{"t":"2025-03-15 22:19","r":"me","x":"宝宝"},{"t":"2025-03-15 23:14","r":"ta","x":"么么"},{"t":"2025-03-15 23:20","r":"me","x":"好喜欢你~"},{"t":"2025-03-15 23:36","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-16 19:02","r":"me","x":"亲亲"},{"t":"2025-03-19 01:51","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-19 02:16","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-19 02:27","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-19 21:06","r":"ta","x":"哈哈哈哈"},{"t":"2025-03-19 22:08","r":"ta","x":"么么"},{"t":"2025-03-19 22:57","r":"me","x":"哈哈哈哈哈"},{"t":"2025-03-20 00:18","r":"ta","x":"哈哈哈"},{"t":"2025-03-20 23:01","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-20 23:14","r":"me","x":"哈哈哈哈"},{"t":"2025-03-20 23:19","r":"me","x":"哈哈哈"},{"t":"2025-03-20 23:35","r":"ta","x":"哈哈哈"},{"t":"2025-03-20 23:53","r":"ta","x":"在干嘛呀宝宝"},{"t":"2025-03-21 00:29","r":"me","x":"哈哈哈哈"},{"t":"2025-03-21 01:03","r":"ta","x":"哈哈哈呗"},{"t":"2025-03-21 01:14","r":"me","x":"哈哈哈"},{"t":"2025-03-21 14:25","r":"ta","x":"mua"},{"t":"2025-03-21 14:36","r":"ta","x":"哈哈哈"},{"t":"2025-03-21 14:40","r":"me","x":"哈哈哈哈"},{"t":"2025-03-21 15:41","r":"ta","x":"哈哈哈哈哈嘻嘻"},{"t":"2025-03-21 15:55","r":"me","x":"心跳加速"},{"t":"2025-03-21 16:00","r":"me","x":"我以前从来没跟别人说过"},{"t":"2025-03-21 16:14","r":"ta","x":"哈哈哈"},{"t":"2025-03-21 16:24","r":"me","x":"哈哈哈呀"},{"t":"2025-03-23 01:00","r":"me","x":"其实我小时候爸妈关系不太好"},{"t":"2025-03-23 01:05","r":"me","x":"只有你知道我这些呀"},{"t":"2025-03-23 01:10","r":"ta","x":"抱抱呀"},{"t":"2025-03-23 13:52","r":"me","x":"哈哈哈哈"},{"t":"2025-03-23 13:53","r":"ta","x":"哈哈哈"},{"t":"2025-03-23 13:56","r":"me","x":"宝贝"},{"t":"2025-03-23 14:15","r":"me","x":"哈哈哈哈哈"},{"t":"2025-03-23 14:38","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-23 15:47","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-23 15:57","r":"ta","x":"心跳加速"},{"t":"2025-03-23 16:40","r":"ta","x":"哈哈哈哈呗"},{"t":"2025-03-24 01:30","r":"ta","x":"想你的时候世界都变温柔了哈"},{"t":"2025-03-24 14:04","r":"ta","x":"哈哈哈呗"},{"t":"2025-03-24 14:51","r":"ta","x":"哈哈哈呗"},{"t":"2025-03-24 15:12","r":"me","x":"在干嘛呀宝宝呀"},{"t":"2025-03-24 16:23","r":"me","x":"哈哈哈"},{"t":"2025-03-25 20:19","r":"me","x":"哈哈哈哈"},{"t":"2025-03-25 20:55","r":"ta","x":"哈哈哈哈"},{"t":"2025-03-25 21:34","r":"me","x":"哈哈哈哈哈"},{"t":"2025-03-25 21:58","r":"ta","x":"哈哈哈哈"},{"t":"2025-03-25 22:27","r":"me","x":"哈哈哈"},{"t":"2025-03-25 22:38","r":"me","x":"哈哈哈"},{"t":"2025-03-25 23:43","r":"me","x":"哈哈哈哈哈"},{"t":"2025-03-25 23:45","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-25 23:52","r":"me","x":"哈哈哈"},{"t":"2025-03-27 01:40","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-27 01:43","r":"me","x":"哈哈哈哈哈"},{"t":"2025-03-27 01:51","r":"ta","x":"哈哈哈哈哈啊"},{"t":"2025-03-27 02:10","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-27 02:19","r":"ta","x":"我爱你呗"},{"t":"2025-03-27 02:25","r":"me","x":"我爱你"},{"t":"2025-03-27 02:51","r":"me","x":"我爱你"},{"t":"2025-03-27 03:17","r":"me","x":"哈哈哈哈哈"},{"t":"2025-03-27 04:30","r":"me","x":"想你的时候世界都变温柔了"},{"t":"2025-03-27 04:49","r":"ta","x":"哈哈哈哈"},{"t":"2025-03-27 18:13","r":"ta","x":"哈哈哈哈"},{"t":"2025-03-27 18:56","r":"ta","x":"哈哈哈哈"},{"t":"2025-03-27 19:36","r":"ta","x":"心跳加速"},{"t":"2025-03-27 19:56","r":"ta","x":"想你了"},{"t":"2025-03-27 20:26","r":"ta","x":"么么"},{"t":"2025-03-27 21:10","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-28 16:25","r":"ta","x":"心跳加速"},{"t":"2025-03-28 16:38","r":"ta","x":"哈哈哈"},{"t":"2025-03-28 17:04","r":"me","x":"哈哈哈"},{"t":"2025-03-28 17:24","r":"me","x":"哈哈哈"},{"t":"2025-03-28 17:51","r":"me","x":"哈哈哈哈"},{"t":"2025-03-28 17:55","r":"ta","x":"我爱你"},{"t":"2025-03-28 18:20","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-29 15:04","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-29 15:18","r":"me","x":"宝贝"},{"t":"2025-03-29 15:19","r":"ta","x":"哈哈哈"},{"t":"2025-03-29 15:57","r":"ta","x":"哈哈哈哈呀"},{"t":"2025-03-29 16:07","r":"me","x":"宝贝嘻嘻"},{"t":"2025-03-29 16:16","r":"me","x":"哈哈哈哈哈"},{"t":"2025-03-29 16:52","r":"me","x":"mua"},{"t":"2025-03-30 11:02","r":"ta","x":"哈哈哈"},{"t":"2025-03-30 11:24","r":"me","x":"哈哈哈哈哈"},{"t":"2025-03-30 11:50","r":"me","x":"哈哈哈哈"},{"t":"2025-03-30 12:16","r":"ta","x":"心跳加速"},{"t":"2025-03-30 13:01","r":"me","x":"哈哈哈哈哈"},{"t":"2025-03-30 13:07","r":"me","x":"哈哈哈哈哈嘻嘻"},{"t":"2025-03-30 13:39","r":"ta","x":"哈哈哈哈"},{"t":"2025-03-30 13:56","r":"ta","x":"哈哈哈"},{"t":"2025-03-31 20:13","r":"ta","x":"哈哈哈哈哈"},{"t":"2025-03-31 20:39","r":"me","x":"哈哈哈哈呗"},{"t":"2025-03-31 21:01","r":"me","x":"哈哈哈哈哈"}];
+    function escapeHTML(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function highlight(t, q){
+      if(!q) return escapeHTML(t);
+      const esc = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return escapeHTML(t).replace(new RegExp('('+esc+')', 'gi'), '<mark>$1</mark>');
+    }
+    let _t;
+    function doSearch(){clearTimeout(_t);_t=setTimeout(_go,150);}
+    function _go(){
+      const q=document.getElementById('q').value.trim();
+      const sr=document.getElementById('sr');
+      if(!q){sr.classList.remove('visible');return;}
+      const qL=q.toLowerCase();
+      const hits=SEARCH_DATA.filter(m=>m.x.toLowerCase().includes(qL)).slice(0,120);
+      sr.innerHTML=hits.map(m=>`<div class="search-hit"><span style="color:#aaa;font-family:monospace;font-size:11px;margin-right:6px">${m.t}</span><span style="color:${m.r==='me'?'#4f8cff':'#ff5a7e'};font-weight:700;margin-right:6px">${m.r==='me'?'Me':'Partner'}</span>${highlight(m.x,q)}</div>`).join('');
+      sr.classList.add('visible');
+    }
+    </script>
+    
+</div>
+<footer>Generated locally by <a href="https://github.com/RUANGUANYUAN11111/chatrel" style="color:#888">ChatRel</a></footer>
+</body></html>

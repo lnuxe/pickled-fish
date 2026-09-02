@@ -1,50 +1,32 @@
 # NOTICE
 
-This repository combines multiple components.
+This repository combines multiple components. See also [LICENSE](LICENSE).
 
-## pickled-fish (export, RAG orchestration, local-chat pipeline)
+## pickled-fish (orchestration, export, psych-foundations, local-chat)
 
-Copyright (c) 2026 lnuxe  
-MIT — see [LICENSE](LICENSE).
+Copyright (c) 2026 lnuxe — MIT
 
-## qingsheng-skill
+## Bundled third-party knowledge packs
 
-Vendored under `skills/qingsheng/` (except local-chat-pipeline.md additions).  
-https://github.com/tomwong001/qingsheng-skill  
-Copyright (c) 2026 tomwong001 and qingsheng-skill contributors — MIT  
-See `skills/qingsheng/LICENSE`.
+| Pack dir | Upstream | License |
+|----------|----------|---------|
+| `skills/qingsheng/` | https://github.com/tomwong001/qingsheng-skill | MIT |
+| `knowledge/packs/dating-master/` | https://github.com/YixiaJack/dating-master-skill | MIT |
+| `knowledge/packs/lovelab/` | https://github.com/thc1006/lovelab-skills | MIT |
+| `knowledge/packs/partner/` | https://github.com/NatalieCao323/partner-skill | MIT |
+| `knowledge/packs/rel-consult/` | https://github.com/gbanyan/relationship-consultation-system | MIT |
+| `knowledge/packs/nvc/` | https://github.com/ayi-ai/ayi-nonviolent-communication | MIT |
+| `knowledge/packs/howtotalk/` | https://github.com/ironyjk/howtotalk | MIT |
+| `knowledge/packs/attachment-ecr/` | https://github.com/SpencerRaw/hermes-attachment-style | MIT |
+| `knowledge/packs/chatrel/` (docs subset) | https://github.com/ruanflux/chatrel | MIT |
 
-## dating-master-skill
+Each pack retains its upstream LICENSE file where present.
 
-Vendored under `knowledge/packs/dating-master/`.  
-https://github.com/YixiaJack/dating-master-skill  
-Copyright (c) 2026 YixiaJack — MIT  
-See `knowledge/packs/dating-master/LICENSE`.
+## Optional remotes (not vendored by default)
 
-## lovelab-skills
+Listed in `knowledge/REGISTRY.md` section D, including CC0 Psychology-Summaries and packs without a clear LICENSE (install at your own risk; do not re-publish without rights).
 
-Vendored under `knowledge/packs/lovelab/`.  
-https://github.com/thc1006/lovelab-skills  
-Copyright (c) 2026 Hsiu-Chi Tsai (thc1006) — MIT  
-See `knowledge/packs/lovelab/LICENSE`.
-
-## Optional remote packs (not vendored by default)
-
-Users may install via `scripts/add-pack.sh`:
-
-- https://github.com/pajamadot/love-skill  
-- https://github.com/NatalieCao323/partner-skill  
-- https://github.com/ddyuan-spec/dating-coach-skill  
-
-Comply with each upstream license before redistribution.
-
-## Third-party native tools (not vendored)
+## Native tools (not vendored)
 
 - https://github.com/TANGandXUE/wcdb-key-tool  
-- https://github.com/chang-xinhai/WxEcho / `@walkerch/wxecho`  
-
-## RAG design note
-
-Filesystem progressive-disclosure approach is conceptually aligned with
-public “knowledge-base-builder” style index-first agents; this repo does not
-vendor that project’s code.
+- WxEcho / `@walkerch/wxecho`  

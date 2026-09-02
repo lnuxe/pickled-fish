@@ -1,0 +1,30 @@
+# 伴侣 Skill 数据目录（包含隐私信息，不提交）
+partners/*/
+!partners/example_*/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+*.egg
+
+# 临时文件
+*.tmp
+*.bak
+upgrade_plan.md
+docs/partner_skill_paper.md
+
+# 系统文件
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# 测试输出
+/tmp/
+*.log

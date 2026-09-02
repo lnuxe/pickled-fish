@@ -1,0 +1,37 @@
+name: Skill Request
+description: Propose a new skill or improvement to an existing skill.
+title: "[Skill] "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to Solve
+      description: What user need or workflow gap does this address?
+      placeholder: Describe the practical gap
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Skill Behavior
+      description: What should the skill do, and when should it trigger?
+      placeholder: Trigger conditions, core steps, expected output
+    validations:
+      required: true
+
+  - type: textarea
+    id: files
+    attributes:
+      label: Related Files
+      description: Optional list of files likely to be changed.
+      placeholder: "e.g. skills/new-skill.skill.md, docs/integration-guide.md"
+
+  - type: textarea
+    id: safety
+    attributes:
+      label: Safety and Boundary Notes
+      description: Any risks, edge cases, or misuse considerations?
+      placeholder: Non-diagnostic language, autonomy support, etc.

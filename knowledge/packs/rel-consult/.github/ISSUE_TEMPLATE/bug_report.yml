@@ -1,0 +1,46 @@
+name: Bug Report
+description: Report an issue in skills behavior, docs, or templates.
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What is the bug?
+      placeholder: Short description of the issue
+    validations:
+      required: true
+
+  - type: textarea
+    id: location
+    attributes:
+      label: Affected Files
+      description: Which files are involved?
+      placeholder: "e.g. skills/attachment-dynamics.skill.md"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: How can someone reproduce this behavior?
+      placeholder: "1. ... 2. ... 3. ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should happen instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: Optional context, screenshots, logs, or examples.

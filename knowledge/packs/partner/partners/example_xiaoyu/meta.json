@@ -1,0 +1,35 @@
+{
+  "name": "小鱼",
+  "slug": "example_xiaoyu",
+  "profile": {
+    "gender": "女",
+    "age": 26,
+    "occupation": "UI 设计师",
+    "zodiac": "天蝎",
+    "mbti": "INFJ",
+    "attachment_style": "焦虑型",
+    "love_languages": ["精心时刻", "肯定言辞"],
+    "big_five": {
+      "openness": "高",
+      "conscientiousness": "中",
+      "extraversion": "低",
+      "agreeableness": "高",
+      "neuroticism": "高"
+    },
+    "conflict_style": "冷战型",
+    "decision_style": "直觉型",
+    "intimacy_style": "语言 + 精心时刻"
+  },
+  "relationship": {
+    "stage": "稳定期",
+    "duration_months": 14,
+    "cohabiting": false,
+    "long_distance": false
+  },
+  "version": "v1",
+  "created_at": "2026-04-05T00:00:00+00:00",
+  "updated_at": "2026-04-05T00:00:00+00:00",
+  "corrections_count": 0,
+  "rqi_score": 7.2,
+  "relationship_stage": "稳定期"
+}

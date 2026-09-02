@@ -1,67 +1,60 @@
 ---
 name: pickled-fish
 description: >-
-  macOS WeChat local export plus pluggable relationship knowledge packs and
-  filesystem RAG orchestration (qingsheng, dating-master, lovelab, custom KBs).
-  Use for WeChat decrypt/export, chat.txt analysis, 怎么回/挽回, 知识库/RAG/自定义包,
-  or switching coaching frameworks (Gottman, attachment, signaling).
+  macOS WeChat export plus pluggable psychology/relationship/social knowledge
+  packs and filesystem RAG (qingsheng, Gottman, NVC, attachment, howtotalk,
+  partner, custom KBs). Use for decrypt/export, chat.txt analysis, 怎么回/挽回,
+  心理学/依恋/NVC/知识库/RAG/自定义包, or switching frameworks.
 ---
 
-# pickled-fish · 导出 + 可插拔知识库
+# pickled-fish · 泡菜鱼 · 导出 + 心理/关系知识库
 
-> [DISCLAIMER.md](DISCLAIMER.md) · 仅限本人数据 · 情感建议非专业咨询 · 禁止骚扰
+> [DISCLAIMER.md](DISCLAIMER.md) · 仅限本人数据 · 非专业诊疗 · 禁止骚扰
 
 ```
-微信本地库 ──wechat-export──► chat.txt
-                                 │
-                    ┌────────────┴────────────┐
-                    ▼                         ▼
-              local-chat 统计              kb-rag 选 pack
-                    │                         │
-                    └──────────► 分析 ◄───────┘
-                         (qingsheng / dating-master / lovelab / custom)
+微信导出 → local-chat 统计 → kb-rag（REGISTRY）→ 理论/实操/自定义 pack
 ```
 
 ## 模块
 
 | 模块 | 路径 |
 |------|------|
-| 总控（本文件） | 导出→选库→分析 |
+| 知识总目录 | [knowledge/REGISTRY.md](knowledge/REGISTRY.md) |
+| 课程地图 | [knowledge/packs/psych-foundations](knowledge/packs/psych-foundations/) |
+| RAG 编排 | [skills/kb-rag/SKILL.md](skills/kb-rag/SKILL.md) |
 | 微信导出 | [skills/wechat-mac-export/SKILL.md](skills/wechat-mac-export/SKILL.md) |
-| **知识库 RAG 编排** | [skills/kb-rag/SKILL.md](skills/kb-rag/SKILL.md) |
-| 知识目录 | [knowledge/REGISTRY.md](knowledge/REGISTRY.md) |
-| 情圣（默认情感包） | [skills/qingsheng/SKILL.md](skills/qingsheng/SKILL.md) |
-| 全量 chat 管线 | [skills/qingsheng/references/local-chat-pipeline.md](skills/qingsheng/references/local-chat-pipeline.md) |
+| 默认中文实操 | [skills/qingsheng/SKILL.md](skills/qingsheng/SKILL.md) |
 
 ## 默认工作流
 
 ```
 Task Progress:
-- [ ] 1. 需要本地微信数据？→ wechat-mac-export
-- [ ] 2. Read knowledge/REGISTRY.md → kb-rag 选 1–2 个 pack
-- [ ] 3. 若有 chat.txt → local-chat-pipeline 统计/时间线
-- [ ] 4. 按选中 pack 的 SKILL/references 分析
-- [ ] 5. 输出 1–2 关键点 + packs_used + 可发送原文或「先不发」
+- [ ] 1. 导出？→ wechat-mac-export
+- [ ] 2. Read knowledge/REGISTRY.md（或先 psych-foundations 地图）
+- [ ] 3. kb-rag 选 ≤2 个 pack
+- [ ] 4. chat.txt？→ local-chat-pipeline
+- [ ] 5. 分析：1–2 关键点 + packs_used + 可发送原文或「先不发」
 ```
 
-### 安全（总控强制）
+### 安全
 
-- 对方明确拒绝 / 报警 / 要求停止 → **停止接触优先于任何话术包**  
-- 事务收尾（快递/退款）与情感挽回分开  
-- 勿把密钥、chat.txt、自定义隐私包推送到公开 git  
+对方明确拒绝 / 报警 → **停联系**优先于任何 pack。  
+事务收尾与情感挽回分开。勿提交密钥与 chat。
 
-### 切换知识库示例
+### 选包速查
 
-- 「用信号博弈/依恋分析」→ pack `dating-master`  
-- 「用 Gottman/NVC 看情侣对话」→ pack `lovelab`  
-- 「还是情圣怎么回」→ pack `qingsheng`  
-- 「用我自己的笔记」→ `knowledge/custom/<id>` + `scripts/add-pack.sh`  
+- 理论基础 → `psych-foundations`
+- 依恋 → `attachment-ecr` / `dating-master`
+- 情侣冲突 → `lovelab` / `nvc`
+- 沟通谈判 → `howtotalk`
+- 怎么回/挽回 → `qingsheng`
+- 关系维护 → `partner`
+- 量化框架 → `chatrel` docs
 
 ---
 
 ## Agent 纪律
 
-1. 选库走 **kb-rag**，禁止凭空混用未读取的 pack 内容。  
-2. 同轮深读最多 1–2 个 pack 入口。  
-3. 导出技术问题以 wechat-mac-export 为准。  
-4. 标注 `packs_used: [...]`。  
+1. 选库必须经过 REGISTRY / kb-rag，禁止编造未读 pack 内容。
+2. 同轮深读 ≤2 个 pack 入口。
+3. 标注 `packs_used: [...]`。
