@@ -15,7 +15,7 @@
 
 <br/>
 
-<sub>Turn chats into searchable evidence. Route evidence through swappable theory packs. Then decide what to send — or not.</sub>
+<sub>Your chats. Your frameworks. Clear judgment.</sub>
 
 </div>
 
