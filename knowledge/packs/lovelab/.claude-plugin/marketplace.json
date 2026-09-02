@@ -1,0 +1,37 @@
+{
+  "name": "lovelab-marketplace",
+  "owner": {
+    "name": "Hsiu-Chi Tsai(thc1006)",
+    "email": "hctsai@linux.com"
+  },
+  "metadata": {
+    "description": "LoveLab: evidence-based couple dialogue analysis skills for AI agents",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "lovelab",
+      "source": "./",
+      "description": "Evidence-based couple dialogue analysis. Detects Gottman Four Horsemen, attachment signals, NVC compliance, cognitive distortions, and communication dynamics.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": [
+        "couple",
+        "relationship",
+        "dialogue",
+        "gottman",
+        "attachment",
+        "nvc",
+        "psychology"
+      ],
+      "category": "analysis",
+      "tags": [
+        "relationship",
+        "communication",
+        "psychology",
+        "chinese",
+        "couples"
+      ]
+    }
+  ]
+}

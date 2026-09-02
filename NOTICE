@@ -1,31 +1,50 @@
 # NOTICE
 
-This repository combines multiple components:
+This repository combines multiple components.
 
-## mac-wechat-coach (export pipeline & orchestration)
+## mac-wechat-coach (export, RAG orchestration, local-chat pipeline)
 
 Copyright (c) 2026 lnuxe  
-Licensed under the MIT License — see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE).
 
-Includes original documentation for macOS WeChat local export and the
-`local-chat-pipeline` integration layer.
+## qingsheng-skill
 
-## qingsheng-skill (relationship coaching knowledge base)
+Vendored under `skills/qingsheng/` (except local-chat-pipeline.md additions).  
+https://github.com/tomwong001/qingsheng-skill  
+Copyright (c) 2026 tomwong001 and qingsheng-skill contributors — MIT  
+See `skills/qingsheng/LICENSE`.
 
-The contents under `skills/qingsheng/` (except files explicitly marked as
-local additions such as `references/local-chat-pipeline.md`) are derived from:
+## dating-master-skill
 
-https://github.com/tomwong001/qingsheng-skill
+Vendored under `knowledge/packs/dating-master/`.  
+https://github.com/YixiaJack/dating-master-skill  
+Copyright (c) 2026 YixiaJack — MIT  
+See `knowledge/packs/dating-master/LICENSE`.
 
-Copyright (c) 2026 tomwong001 and qingsheng-skill contributors  
-Licensed under the MIT License — see [skills/qingsheng/LICENSE](skills/qingsheng/LICENSE).
+## lovelab-skills
 
-Upstream project description: Chinese relationship / social coaching skill
-for chat analysis and reply suggestions.
+Vendored under `knowledge/packs/lovelab/`.  
+https://github.com/thc1006/lovelab-skills  
+Copyright (c) 2026 Hsiu-Chi Tsai (thc1006) — MIT  
+See `knowledge/packs/lovelab/LICENSE`.
 
-## Third-party tools (not vendored as source here)
+## Optional remote packs (not vendored by default)
+
+Users may install via `scripts/add-pack.sh`:
+
+- https://github.com/pajamadot/love-skill  
+- https://github.com/NatalieCao323/partner-skill  
+- https://github.com/ddyuan-spec/dating-coach-skill  
+
+Comply with each upstream license before redistribution.
+
+## Third-party native tools (not vendored)
 
 - https://github.com/TANGandXUE/wcdb-key-tool  
 - https://github.com/chang-xinhai/WxEcho / `@walkerch/wxecho`  
 
-Users must obtain and comply with those projects’ own licenses and terms.
+## RAG design note
+
+Filesystem progressive-disclosure approach is conceptually aligned with
+public “knowledge-base-builder” style index-first agents; this repo does not
+vendor that project’s code.

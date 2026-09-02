@@ -1,0 +1,27 @@
+{
+  "name": "lovelab",
+  "description": "Evidence-based couple dialogue analysis. Detects Gottman Four Horsemen, attachment signals, NVC compliance, cognitive distortions, and communication dynamics in conversation transcripts. Culturally calibrated for Chinese/Mandarin and Western contexts.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Hsiu-Chi Tsai(thc1006)",
+    "email": "hctsai@linux.com"
+  },
+  "homepage": "https://github.com/thc1006/lovelab-skills",
+  "repository": "https://github.com/thc1006/lovelab-skills",
+  "license": "MIT",
+  "keywords": [
+    "couple",
+    "relationship",
+    "dialogue",
+    "communication",
+    "gottman",
+    "attachment-theory",
+    "nvc",
+    "cognitive-distortion",
+    "agent-skills",
+    "chinese",
+    "mandarin",
+    "couples-therapy",
+    "psychology"
+  ]
+}

@@ -1,56 +1,58 @@
 # mac-wechat-coach
 
-Cursor Agent Skills 组合包：**本机导出 macOS 微信聊天** + **中文情感关系分析（情圣知识库）**。
+macOS **微信本机导出** + **可插拔情感/关系知识库** + **文件系统 RAG 编排**。
 
 > **先读 [DISCLAIMER.md](DISCLAIMER.md)。** 非官方 · 仅限本人账号/设备 · 可能违反微信协议 · 情感建议非专业咨询 · 风险自负。
 
-## 仓库里有什么
+## 架构
 
-| 路径 | 作用 |
-|------|------|
-| [SKILL.md](SKILL.md) | **总控 skill**：导出 → 解析 → 分析的一站式流程 |
-| [skills/wechat-mac-export/](skills/wechat-mac-export/) | macOS 微信 4.x 本地库解密与导出 |
-| [skills/qingsheng/](skills/qingsheng/) | 情圣恋爱教练知识库（源自 [tomwong001/qingsheng-skill](https://github.com/tomwong001/qingsheng-skill)，MIT） |
-| [skills/qingsheng/references/local-chat-pipeline.md](skills/qingsheng/references/local-chat-pipeline.md) | **本仓新增**：整段 `chat.txt` 本地分析管线 |
+| 层 | 内容 |
+|----|------|
+| 导出 | [skills/wechat-mac-export](skills/wechat-mac-export/)（wcdb-key-tool + WxEcho 路径） |
+| 编排 | [skills/kb-rag](skills/kb-rag/)：按意图选择知识包，progressive disclosure |
+| 知识包 | [knowledge/REGISTRY.md](knowledge/REGISTRY.md) |
+| 总控 | [SKILL.md](SKILL.md) |
+
+默认 **不依赖向量数据库**；大私有语料可按 kb-rag 文档挂本地 `search.py`。
+
+## 已收录 / 可安装的知识包
+
+**随仓（MIT）：**
+
+- [qingsheng-skill](https://github.com/tomwong001/qingsheng-skill) — 中文恋爱教练  
+- [dating-master-skill](https://github.com/YixiaJack/dating-master-skill) — 语用学 / 依恋 / 信号博弈  
+- [lovelab-skills](https://github.com/thc1006/lovelab-skills) — Gottman / NVC / 认知 / 依恋  
+
+**可选安装（`scripts/add-pack.sh`）：**
+
+- [love-skill](https://github.com/pajamadot/love-skill)  
+- [partner-skill](https://github.com/NatalieCao323/partner-skill)  
+- [dating-coach-skill](https://github.com/ddyuan-spec/dating-coach-skill)  
+- 任意本地笔记目录（复制 `_template`）
 
 ## 安装
 
-### 推荐：整仓装为一个 skill
-
 ```bash
 git clone https://github.com/lnuxe/mac-wechat-coach.git ~/.cursor/skills/mac-wechat-coach
+bash ~/.cursor/skills/mac-wechat-coach/scripts/install-skills.sh
 ```
 
-### 或拆成两个 skill（便于单独触发）
+添加自定义包：
 
 ```bash
-REPO=~/.cursor/skills/mac-wechat-coach
-git clone https://github.com/lnuxe/mac-wechat-coach.git "$REPO"
-ln -sfn "$REPO/skills/wechat-mac-export" ~/.cursor/skills/wechat-mac-export
-ln -sfn "$REPO/skills/qingsheng" ~/.cursor/skills/qingsheng
-```
-
-也可运行：
-
-```bash
-bash scripts/install-skills.sh
+bash scripts/add-pack.sh my-kb ~/Documents/my-relationship-notes
+# 或
+bash scripts/add-pack.sh love-skill https://github.com/pajamadot/love-skill
 ```
 
 ## 典型用法
 
-1. 「帮我导出和某某的微信聊天」→ 走 `wechat-mac-export`  
-2. 「根据这份 chat.txt / 聊天记录分析关系、怎么回、要不要挽回」→ 走 `qingsheng` + `local-chat-pipeline`  
-3. 「导出并分析」→ 走根目录总控 [SKILL.md](SKILL.md)
-
-## 不要提交什么
-
-- passphrase / 密钥、解密 `*.db`、导出的 `chat.txt` / `chat.json`  
-- 真实联系人档案、截图里的隐私信息  
-
-见 `.gitignore`。
+1. 「导出和某某的微信」→ wechat-export  
+2. 「根据 chat.txt 分析，用情圣」→ local-chat + qingsheng  
+3. 「换依恋/信号博弈视角」→ kb-rag → dating-master  
+4. 「情侣吵架用 Gottman」→ lovelab  
+5. 「只用我自己的知识库」→ custom pack  
 
 ## 致谢与许可
 
-- 微信导出流程与总控编排：本仓库，[MIT](LICENSE)（Copyright lnuxe）  
-- 情圣知识库：© tomwong001 and qingsheng-skill contributors，[MIT](skills/qingsheng/LICENSE) — 详见 [NOTICE](NOTICE)  
-- 解密依赖第三方：[wcdb-key-tool](https://github.com/TANGandXUE/wcdb-key-tool)、[WxEcho](https://github.com/chang-xinhai/WxEcho)（各从其许可证）
+见 [NOTICE](NOTICE)、[LICENSE](LICENSE)。上游包版权归原作者；本仓编排与导出文档 Copyright lnuxe。

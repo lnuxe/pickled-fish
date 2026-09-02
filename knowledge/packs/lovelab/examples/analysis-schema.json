@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/thc1006/lovelab-skills/blob/main/examples/analysis-schema.json",
+  "title": "LoveLab Analysis Result",
+  "description": "Standardized intermediate format for LoveLab analysis results. Enables longitudinal tracking across multiple sessions and programmatic comparison.",
+  "type": "object",
+  "required": ["meta", "horsemen", "attachment", "nvc", "cognitive", "dynamics"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["schema_version", "analyzed_at", "transcript_id", "language"],
+      "properties": {
+        "schema_version": {
+          "type": "string",
+          "const": "1.0.0"
+        },
+        "analyzed_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of when the analysis was performed"
+        },
+        "transcript_id": {
+          "type": "string",
+          "description": "User-provided identifier for the transcript (date, filename, or label)"
+        },
+        "language": {
+          "type": "string",
+          "description": "Detected language of the transcript",
+          "examples": ["zh-TW", "zh-CN", "en", "ja", "ko"]
+        },
+        "cultural_calibration": {
+          "type": "string",
+          "enum": ["chinese-taiwanese", "chinese-mainland", "japanese", "korean", "western", "none"],
+          "description": "Which cultural calibration layer was applied"
+        },
+        "speakers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "label": { "type": "string" },
+              "utterance_count": { "type": "integer" },
+              "word_count": { "type": "integer" }
+            }
+          }
+        },
+        "overall_health": {
+          "type": "string",
+          "enum": ["thriving", "growing", "strained", "needs-attention"],
+          "description": "Snapshot assessment of THIS conversation, not the relationship"
+        }
+      }
+    },
+    "horsemen": {
+      "type": "object",
+      "description": "Gottman Four Horsemen analysis results",
+      "properties": {
+        "criticism": {
+          "$ref": "#/$defs/horseman_score"
+        },
+        "contempt": {
+          "$ref": "#/$defs/horseman_score"
+        },
+        "defensiveness": {
+          "$ref": "#/$defs/horseman_score"
+        },
+        "stonewalling": {
+          "$ref": "#/$defs/horseman_score"
+        },
+        "repair_attempts": {
+          "type": "object",
+          "properties": {
+            "total": { "type": "integer" },
+            "successful": { "type": "integer" },
+            "failed": { "type": "integer" },
+            "success_rate": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "by_speaker": {
+              "type": "object",
+              "additionalProperties": { "type": "integer" }
+            }
+          }
+        },
+        "positive_interaction_ratio": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Ratio of positive to negative utterances. Reference: Gottman observed ~5:1 in stable couples (heuristic, not universal standard)"
+        }
+      }
+    },
+    "attachment": {
+      "type": "object",
+      "description": "Attachment style dimensional analysis per speaker",
+      "properties": {
+        "speakers": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/attachment_score"
+          }
+        },
+        "demon_dialogue": {
+          "type": "string",
+          "enum": ["find-the-bad-guy", "protest-polka", "freeze-and-flee", "none"],
+          "description": "EFT demon dialogue pattern detected"
+        },
+        "demon_dialogue_severity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        }
+      }
+    },
+    "nvc": {
+      "type": "object",
+      "description": "NVC compliance analysis results",
+      "properties": {
+        "speakers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "giraffe_ratio": { "type": "number", "minimum": 0, "maximum": 1 },
+              "avg_score": { "type": "number", "minimum": 0, "maximum": 4 },
+              "observation_avg": { "type": "number", "minimum": 0, "maximum": 1 },
+              "feeling_avg": { "type": "number", "minimum": 0, "maximum": 1 },
+              "need_avg": { "type": "number", "minimum": 0, "maximum": 1 },
+              "request_avg": { "type": "number", "minimum": 0, "maximum": 1 }
+            }
+          }
+        }
+      }
+    },
+    "cognitive": {
+      "type": "object",
+      "description": "Cognitive distortion inventory",
+      "properties": {
+        "speakers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "mind_reading": { "type": "integer" },
+              "catastrophizing": { "type": "integer" },
+              "black_and_white": { "type": "integer" },
+              "overgeneralization": { "type": "integer" },
+              "should_statements": { "type": "integer" },
+              "personalization": { "type": "integer" },
+              "fortune_telling": { "type": "integer" },
+              "total": { "type": "integer" },
+              "density_per_100": {
+                "type": "number",
+                "description": "Distortions per 100 utterances, for cross-session comparison"
+              },
+              "avg_severity": { "type": "number", "minimum": 0, "maximum": 10 }
+            }
+          }
+        }
+      }
+    },
+    "dynamics": {
+      "type": "object",
+      "description": "Communication dynamics analysis",
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "enum": ["pursuer-withdrawer", "mutual-pursuit", "mutual-withdrawal", "role-switching", "balanced"]
+        },
+        "pursuer": {
+          "type": "string",
+          "description": "Speaker ID of the pursuer, if applicable"
+        },
+        "withdrawer": {
+          "type": "string",
+          "description": "Speaker ID of the withdrawer, if applicable"
+        },
+        "power_asymmetry": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "0=balanced, 10=severe imbalance"
+        },
+        "power_direction": {
+          "type": "string",
+          "description": "Speaker ID holding more structural power, or 'balanced'"
+        },
+        "pronouns": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "we_ratio": { "type": "number", "minimum": 0, "maximum": 1 },
+              "i_ratio": { "type": "number", "minimum": 0, "maximum": 1 },
+              "you_ratio_in_conflict": { "type": "number", "minimum": 0, "maximum": 1 }
+            }
+          }
+        },
+        "lsm_estimate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Estimated linguistic style matching score"
+        },
+        "topic_initiation": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "total": { "type": "integer" },
+              "conflict": { "type": "integer" },
+              "positive": { "type": "integer" }
+            }
+          }
+        }
+      }
+    },
+    "recurring_themes": {
+      "type": "array",
+      "description": "Themes detected in this session. Used for cross-session tracking.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "theme": { "type": "string" },
+          "frequency_in_session": { "type": "integer" },
+          "direction": {
+            "type": "string",
+            "enum": ["improving", "static", "escalating", "new", "resolved"]
+          }
+        }
+      }
+    },
+    "crisis_flags": {
+      "type": "array",
+      "description": "Any crisis indicators detected. Empty array if none.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["self-harm", "suicidal-ideation", "violence", "substance-crisis"]
+          },
+          "speaker": { "type": "string" },
+          "utterance": { "type": "string" },
+          "line": { "type": "integer" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "horseman_score": {
+      "type": "object",
+      "properties": {
+        "count_by_speaker": {
+          "type": "object",
+          "additionalProperties": { "type": "integer" }
+        },
+        "severity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10
+        }
+      }
+    },
+    "attachment_score": {
+      "type": "object",
+      "properties": {
+        "anxiety": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Attachment anxiety dimension score"
+        },
+        "avoidance": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Attachment avoidance dimension score"
+        },
+        "tendency": {
+          "type": "string",
+          "enum": ["secure", "anxious", "avoidant", "fearful"],
+          "description": "Quadrant shorthand label (clinical convenience only)"
+        }
+      }
+    }
+  }
+}

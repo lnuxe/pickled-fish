@@ -16,3 +16,9 @@ chat.csv
 ~/.qingsheng/
 **/targets/
 *.sqlite
+knowledge/custom/*
+!knowledge/custom/README.md
+**/.chroma/
+**/embeddings/
+**/*.faiss
+**/vector-store/
