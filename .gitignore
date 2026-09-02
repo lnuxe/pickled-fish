@@ -1,0 +1,15 @@
+.DS_Store
+*.db
+*.db-shm
+*.db-wal
+*passphrase*
+*all_keys*
+decrypted/
+wechat-decrypted/
+**/Downloads/wxecho/
+chat.txt
+chat.json
+chat.csv
+.env
+*.pem
+*.key
