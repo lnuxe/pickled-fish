@@ -11,6 +11,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/lnuxe/pickled-fish?style=for-the-badge&logo=github&color=e8a838)](https://github.com/lnuxe/pickled-fish/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-2d6a4f?style=for-the-badge)](LICENSE)
 [![Platform](https://img.shields.io/badge/macOS-WeChat%204.x-1d3557?style=for-the-badge)](skills/wechat-mac-export/)
+[![Platform](https://img.shields.io/badge/Windows-WeChat%204.1%2B-2d6a4f?style=for-the-badge)](skills/wechat-win-export-v4/)
 [![Disclaimer](https://img.shields.io/badge/先读-DISCLAIMER-c1121f?style=for-the-badge)](DISCLAIMER.md)
 
 <br/>
@@ -27,8 +28,10 @@
 
 它不是聊天机器人，也不是云端咨询。核心是三块已经写进仓库的代码与文档：
 
-1. **导出管线** — [`skills/wechat-mac-export`](skills/wechat-mac-export/)  
-   针对 WeChat 4.1.10+：`wcdb-key-tool`（LLDB 抓 passphrase → PBKDF2）解密 `db_storage/*.db`，再用 `wxecho export "昵称"` 写出 `~/Downloads/wxecho/<联系人>/chat.txt`。
+1. **导出管线** — [`skills/wechat-mac-export`](skills/wechat-mac-export/)（macOS）+ [`skills/wechat-win-export-v4`](skills/wechat-win-export-v4/)（Windows 4.1+）  
+   **macOS**：`wcdb-key-tool`（LLDB 抓 passphrase → PBKDF2）解密 `db_storage/*.db`，再用 `wxecho export "昵称"` 写出 `~/Downloads/wxecho/<联系人>/chat.txt`。  
+   **Windows 4.1+**：`wx_key.dll` hook `SetDBKey` 取密钥 → 用实测 SQLCipher 参数解密 → 定位会话表 → 导出同款 `chat.txt`。
+   已在 **微信 4.1.15.13** 上实测：23/23 个数据库全部解密成功。参数与五个坑（IV 偏移 4016、页 1 需补齐 4096、过期 WAL 覆盖陷阱等）都写在 skill 里。
 2. **整段聊天分析** — [`skills/qingsheng/references/local-chat-pipeline.md`](skills/qingsheng/references/local-chat-pipeline.md)  
    对上万行导出做时间线、话轮、冷场/转折点统计，避免只看截图断章取义。
 3. **知识库编排** — [`skills/kb-rag`](skills/kb-rag/) + [`knowledge/REGISTRY.md`](knowledge/REGISTRY.md)  
@@ -42,10 +45,11 @@
 ## 端到端流程
 
 ```text
-Mac WeChat 4.x
-  db_storage/message_*.db
-        │  wechat-mac-export
-        │  (wcdb-key-tool → 明文库 → wxecho)
+Mac WeChat 4.x / Win WeChat 4.1+
+  db_storage/message_*.db（或 WeChat Files\Msg\）
+        │  wechat-mac-export（Mac）
+        │  wechat-win-export-v4（Win：wx_key.dll hook SetDBKey → 自研解密）
+        │  (取 key → 明文库 → 导出)
         ▼
   chat.txt / json / csv
         │  local-chat-pipeline
@@ -66,7 +70,7 @@ Mac WeChat 4.x
 
 | 你说 | Agent 实际打开 |
 |:--|:--|
-| 导出某某的聊天 | `skills/wechat-mac-export/SKILL.md` → `wxecho export` |
+| 导出某某的聊天 | `skills/wechat-mac-export/SKILL.md` → `wxecho export`（Mac）；`skills/wechat-win-export-v4/SKILL.md`（Windows 4.1+） |
 | 这一大段 chat.txt 什么意思 | `local-chat-pipeline.md` → 再选理论/实操 pack |
 | 她什么意思 / 怎么回 / 挽回 | 默认 `skills/qingsheng/`（七阶段、挽回、展示面） |
 | 用依恋 / Gottman / NVC 看 | `knowledge/packs/attachment-ecr` · `lovelab` · `nvc` |
@@ -88,10 +92,13 @@ pickled-fish/
 │   └── custom/              # 你的私有包（默认不进公开 git）
 ├── skills/
 │   ├── wechat-mac-export/   # macOS 微信解密与导出
+│   ├── wechat-win-export/   # Windows 微信 3.x（PyWxDump，4.x 已失效）
+│   ├── wechat-win-export-v4/# Windows 微信 4.1+（实测可用，推荐）
 │   ├── kb-rag/              # 选包与 progressive disclosure
 │   └── qingsheng/           # 中文恋爱实操 + local-chat 管线
 └── scripts/
     ├── install-skills.sh    # 软链到 ~/.cursor/skills/
+    ├── install-skills.ps1   # Windows 版安装（junction）
     └── add-pack.sh          # git/本地目录装进 custom/
 ```
 
@@ -121,7 +128,7 @@ git clone https://github.com/lnuxe/pickled-fish.git ~/.cursor/skills/pickled-fis
 bash ~/.cursor/skills/pickled-fish/scripts/install-skills.sh
 ```
 
-`install-skills.sh` 会软链四个入口到 `~/.cursor/skills/`：`pickled-fish`、`wechat-mac-export`、`qingsheng`、`kb-rag`。
+`install-skills.sh` 会软链四个入口到 `~/.cursor/skills/`：`pickled-fish`、`wechat-mac-export`、`wechat-win-export`、`qingsheng`、`kb-rag`。Windows 上运行 `scripts/install-skills.ps1`（junction + 复制兜底）。
 
 按需安装远端包：
 

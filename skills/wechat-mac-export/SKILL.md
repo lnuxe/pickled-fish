@@ -29,7 +29,7 @@ wcdb-key-tool（LLDB 抓 passphrase → PBKDF2）→ 明文 SQLite
 - 用户要导出某人微信聊天 / 找本地聊天记录
 - 解密失败、`0 keys`、`export` 找不到库
 
-**不要用**：iOS/Android 手机库解密（本流程不支持）；用户只要截图/粘贴分析时，不必走解密。
+**不要用**：iOS/Android 手机库解密（本流程不支持）；Windows 微信导出走 [../wechat-win-export/SKILL.md](../wechat-win-export/SKILL.md)；用户只要截图/粘贴分析时，不必走解密。
 
 **不要协助**：未经授权访问他人设备或账号。
 

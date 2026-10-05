@@ -11,6 +11,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/lnuxe/pickled-fish?style=for-the-badge&logo=github&color=e8a838)](https://github.com/lnuxe/pickled-fish/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-2d6a4f?style=for-the-badge)](LICENSE)
 [![Platform](https://img.shields.io/badge/macOS-WeChat%204.x-1d3557?style=for-the-badge)](skills/wechat-mac-export/)
+[![Platform](https://img.shields.io/badge/Windows-WeChat%204.1%2B-2d6a4f?style=for-the-badge)](skills/wechat-win-export-v4/)
 [![Disclaimer](https://img.shields.io/badge/Read-DISCLAIMER-c1121f?style=for-the-badge)](DISCLAIMER.md)
 
 <br/>
@@ -27,8 +28,10 @@ pickled-fish is a **Cursor Agent skill pack**: export chats from **your own** ma
 
 It is not a hosted chatbot. The product is three concrete modules already in this repo:
 
-1. **Export pipeline** — [`skills/wechat-mac-export`](skills/wechat-mac-export/)  
-   For WeChat 4.1.10+: `wcdb-key-tool` (LLDB passphrase → PBKDF2) decrypts `db_storage/*.db`, then `wxecho export "nickname"` writes `~/Downloads/wxecho/<contact>/chat.txt`.
+1. **Export pipeline** — [`skills/wechat-mac-export`](skills/wechat-mac-export/) (macOS) + [`skills/wechat-win-export-v4`](skills/wechat-win-export-v4/) (Windows 4.1+)  
+   **macOS**: `wcdb-key-tool` (LLDB passphrase → PBKDF2) decrypts `db_storage/*.db`, then `wxecho export "nickname"` writes `~/Downloads/wxecho/<contact>/chat.txt`.  
+   **Windows 4.1+**: `wx_key.dll` hooks `SetDBKey` to capture the key, then a verified SQLCipher parameter set decrypts the databases; conversation table is located and exported to the same `chat.txt`.
+   Verified on **WeChat 4.1.15.13**: 23/23 databases decrypted. The parameters and five pitfalls (IV at offset 4016, page 1 must be padded to 4096, the stale-WAL overwrite trap, ...) are documented in the skill.
 2. **Full-chat analysis** — [`skills/qingsheng/references/local-chat-pipeline.md`](skills/qingsheng/references/local-chat-pipeline.md)  
    Timeline, turn-taking, cold spots and turning points over multi-thousand-line exports — not screenshot fragments.
 3. **Knowledge orchestration** — [`skills/kb-rag`](skills/kb-rag/) + [`knowledge/REGISTRY.md`](knowledge/REGISTRY.md)  
@@ -42,10 +45,11 @@ Read [`DISCLAIMER.md`](DISCLAIMER.md) first (own data only · not therapy · no 
 ## End-to-end flow
 
 ```text
-Mac WeChat 4.x
-  db_storage/message_*.db
-        │  wechat-mac-export
-        │  (wcdb-key-tool → plaintext → wxecho)
+Mac WeChat 4.x / Win WeChat 4.1+
+  db_storage/message_*.db (or WeChat Files\Msg\)
+        │  wechat-mac-export (Mac)
+        │  wechat-win-export-v4 (Win: wx_key.dll hooks SetDBKey → own decryptor)
+        │  (key → plaintext → export)
         ▼
   chat.txt / json / csv
         │  local-chat-pipeline
@@ -66,7 +70,7 @@ How questions map to code:
 
 | You ask | Agent opens |
 |:--|:--|
-| Export someone’s chat | `skills/wechat-mac-export/SKILL.md` → `wxecho export` |
+| Export someone’s chat | `skills/wechat-mac-export/SKILL.md` → `wxecho export` (Mac); `skills/wechat-win-export-v4/SKILL.md` (Windows 4.1+) |
 | What does this huge `chat.txt` mean? | `local-chat-pipeline.md` → then theory/practice packs |
 | What does she mean / how to reply / recovery | default `skills/qingsheng/` |
 | Attachment / Gottman / NVC lens | `knowledge/packs/attachment-ecr` · `lovelab` · `nvc` |
@@ -88,10 +92,13 @@ pickled-fish/
 │   └── custom/              # private packs (keep out of public git)
 ├── skills/
 │   ├── wechat-mac-export/   # macOS WeChat decrypt + export
+│   ├── wechat-win-export/   # Windows WeChat 3.x (PyWxDump; broken on 4.x)
+│   ├── wechat-win-export-v4/# Windows WeChat 4.1+ (verified; recommended)
 │   ├── kb-rag/              # pack selection + progressive disclosure
 │   └── qingsheng/           # CN dating practice + local-chat pipeline
 └── scripts/
     ├── install-skills.sh    # symlink into ~/.cursor/skills/
+    ├── install-skills.ps1   # Windows install (junctions)
     └── add-pack.sh          # install git/local packs into custom/
 ```
 
@@ -121,7 +128,7 @@ git clone https://github.com/lnuxe/pickled-fish.git ~/.cursor/skills/pickled-fis
 bash ~/.cursor/skills/pickled-fish/scripts/install-skills.sh
 ```
 
-`install-skills.sh` symlinks four entries under `~/.cursor/skills/`: `pickled-fish`, `wechat-mac-export`, `qingsheng`, `kb-rag`.
+`install-skills.sh` symlinks five entries under `~/.cursor/skills/`: `pickled-fish`, `wechat-mac-export`, `wechat-win-export`, `qingsheng`, `kb-rag`. On Windows run `scripts/install-skills.ps1` (junctions with copy fallback).
 
 Optional remote pack:
 

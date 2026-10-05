@@ -22,14 +22,16 @@ description: >-
 | 知识总目录 | [knowledge/REGISTRY.md](knowledge/REGISTRY.md) |
 | 课程地图 | [knowledge/packs/psych-foundations](knowledge/packs/psych-foundations/) |
 | RAG 编排 | [skills/kb-rag/SKILL.md](skills/kb-rag/SKILL.md) |
-| 微信导出 | [skills/wechat-mac-export/SKILL.md](skills/wechat-mac-export/SKILL.md) |
+| 微信导出 (macOS) | [skills/wechat-mac-export/SKILL.md](skills/wechat-mac-export/SKILL.md) |
+| 微信导出 (Windows 4.1+) | [skills/wechat-win-export-v4/SKILL.md](skills/wechat-win-export-v4/SKILL.md) |
+| 微信导出 (Windows 3.x 旧路线) | [skills/wechat-win-export/SKILL.md](skills/wechat-win-export/SKILL.md) |
 | 默认中文实操 | [skills/qingsheng/SKILL.md](skills/qingsheng/SKILL.md) |
 
 ## 默认工作流
 
 ```
 Task Progress:
-- [ ] 1. 导出？→ wechat-mac-export
+- [ ] 1. 导出？→ wechat-mac-export（Mac）/ wechat-win-export-v4（Windows 4.1+）
 - [ ] 2. Read knowledge/REGISTRY.md（或先 psych-foundations 地图）
 - [ ] 3. kb-rag 选 ≤2 个 pack
 - [ ] 4. chat.txt？→ local-chat-pipeline

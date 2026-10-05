@@ -43,6 +43,6 @@ Msg_ + md5(username)
 | 平台 | 本流程 |
 |------|--------|
 | macOS 桌面微信 4.x | 适用（随版本可能失效） |
-| Windows 微信 | 不适用 |
+| Windows 微信 | 不适用 → 见 `../wechat-win-export/` |
 | iOS / Android | 不适用 |
 | 未登录 / 无本地库 | 不适用 → 截图 / 粘贴 |
